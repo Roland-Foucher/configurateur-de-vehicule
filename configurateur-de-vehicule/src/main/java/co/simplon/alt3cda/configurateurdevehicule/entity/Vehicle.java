@@ -12,13 +12,13 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Vehicle {
+public abstract class Vehicle {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String Mark;
-  private String Model;
+  private String mark;
+  private String model;
   private String color;
   private BigDecimal price;
   private BigDecimal purshasePrice;
@@ -30,8 +30,8 @@ public class Vehicle {
   public Vehicle(Integer id, String mark, String model, String color, BigDecimal price,
       BigDecimal purshasePrice, LocalDate purshaseDate, String description) {
     this.id = id;
-    Mark = mark;
-    Model = model;
+    this.mark = mark;
+    this.model = model;
     this.color = color;
     this.price = price;
     this.purshasePrice = purshasePrice;
@@ -44,11 +44,11 @@ public class Vehicle {
   }
 
   public String getMark() {
-    return Mark;
+    return mark;
   }
 
   public String getModel() {
-    return Model;
+    return model;
   }
 
   public String getColor() {

@@ -4,12 +4,16 @@ import javax.persistence.Entity;
 
 @Entity
 public class Moto extends MotorVehicle {
-  private int Cylinder;
+  private int cylinder;
 
-  public int getCylinder() {
-    return Cylinder;
+
+  public Moto(int cylinder) {
+    this.cylinder = cylinder;
   }
 
 
+  public int getCylinder() {
+    return cylinder;
+  }
 
 }
