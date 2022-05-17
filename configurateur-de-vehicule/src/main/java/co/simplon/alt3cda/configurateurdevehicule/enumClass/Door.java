@@ -1,4 +1,4 @@
-package co.simplon.alt3cda.configurateurdevehicule.entity.enumClass;
+package co.simplon.alt3cda.configurateurdevehicule.enumClass;
 
 public enum Door {
 
@@ -6,8 +6,9 @@ public enum Door {
 
   private int value;
 
-  Door(int Value) {}
-
+  Door(int value) {
+    this.value = value;
+  }
 
   public int getValue() {
     return value;

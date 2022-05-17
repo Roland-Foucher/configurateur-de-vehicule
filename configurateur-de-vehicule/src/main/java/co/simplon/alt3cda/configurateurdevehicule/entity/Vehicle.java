@@ -12,7 +12,7 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Vehicle {
+public class Vehicle {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
