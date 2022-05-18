@@ -1,5 +1,5 @@
 package co.simplon.alt3cda.configurateurdevehicule.enumClass;
 
-public enum VehiculeEnum {
+public enum VehiculeType {
   Car, Moto, Bike
 }

@@ -3,11 +3,16 @@ package co.simplon.alt3cda.configurateurdevehicule.entity;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
+import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeType;
+import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeType;
 
 
 @Entity
@@ -20,15 +25,18 @@ public class Vehicle {
   private String mark;
   private String model;
   private String color;
-  private BigDecimal price;
-  private BigDecimal purshasePrice;
+  private Double price;
+  private Double purshasePrice;
   private LocalDate purshaseDate;
   private String description;
 
+  @Enumerated(EnumType.STRING)
+  private VehiculeType VehiculeType;
+
   public Vehicle() {}
 
-  public Vehicle(Integer id, String mark, String model, String color, BigDecimal price,
-      BigDecimal purshasePrice, LocalDate purshaseDate, String description) {
+  public Vehicle(Integer id, String mark, String model, String color, Double price,
+      Double purshasePrice, LocalDate purshaseDate, String description) {
     this.id = id;
     this.mark = mark;
     this.model = model;
@@ -55,11 +63,11 @@ public class Vehicle {
     return color;
   }
 
-  public BigDecimal getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public BigDecimal getPurshasePrice() {
+  public Double getPurshasePrice() {
     return purshasePrice;
   }
 
@@ -87,11 +95,11 @@ public class Vehicle {
     this.color = color;
   }
 
-  public void setPrice(BigDecimal price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
-  public void setPurshasePrice(BigDecimal purshasePrice) {
+  public void setPurshasePrice(Double purshasePrice) {
     this.purshasePrice = purshasePrice;
   }
 
@@ -101,6 +109,14 @@ public class Vehicle {
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public VehiculeType getVehiculeType() {
+    return VehiculeType;
+  }
+
+  public void setVehiculeType(VehiculeType vehiculeType) {
+    VehiculeType = vehiculeType;
   }
 
 }
