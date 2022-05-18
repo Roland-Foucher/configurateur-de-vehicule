@@ -15,7 +15,7 @@ import co.simplon.alt3cda.configurateurdevehicule.enumClass.MotoType;
 
 public abstract class VehiculeBuilder {
 
-  public static Vehicle getVehicule(Integer id, String mark, String model, String color,
+  public static Vehicle setVehicule(Integer id, String mark, String model, String color,
       BigDecimal price, BigDecimal purchasePrice, LocalDate purshaseDate, String description) {
     Vehicle vehicle = new Vehicle();
     vehicle.setId(id);
@@ -29,7 +29,7 @@ public abstract class VehiculeBuilder {
 
   }
 
-  public static Bike getVelo(Vehicle vehicle, int chainrings, boolean antitheft, BikeType type) {
+  public static Bike setVelo(Vehicle vehicle, int chainrings, boolean antitheft, BikeType type) {
     Assert.notNull(vehicle, "vehicle is null");
     Assert.notNull(type, "type of bike is null");
 
@@ -40,7 +40,7 @@ public abstract class VehiculeBuilder {
     return bike;
   }
 
-  public static Moto getMoto(Vehicle vehicle, int kilometers, LocalDate launchDate, int power,
+  public static Moto setMoto(Vehicle vehicle, int kilometers, LocalDate launchDate, int power,
       int cylinder, MotoType type) {
     Assert.notNull(vehicle, "vehicle is null");
     Assert.notNull(type, "type of moto is null");
@@ -54,7 +54,7 @@ public abstract class VehiculeBuilder {
     return moto;
   }
 
-  public static Car getCar(Vehicle vehicle, int kilometers, LocalDate launchDate, int power,
+  public static Car setCar(Vehicle vehicle, int kilometers, LocalDate launchDate, int power,
       Door door, GearBox gearBox, CarType type) {
     Assert.notNull(vehicle, "vehicle is null");
     Assert.notNull(door, "no door configured for the car");

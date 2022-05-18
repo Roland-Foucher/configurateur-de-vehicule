@@ -31,7 +31,7 @@ public class VehiculeBuilderTest {
   @Test
   void testBuildCar_When_calledMethode() {
 
-    Car car = VehiculeBuilder.getCar(vehicle, 1000, LocalDate.now(), 10, Door.N2, GearBox.AUTO,
+    Car car = VehiculeBuilder.setCar(vehicle, 1000, LocalDate.now(), 10, Door.N2, GearBox.AUTO,
         CarType.CONVERTIBLE);
     assertNotNull(car);
     assertEquals(1, car.getId());
@@ -40,7 +40,7 @@ public class VehiculeBuilderTest {
 
   @Test
   void testBuildMoto_When_calledMethode() {
-    Moto moto = VehiculeBuilder.getMoto(vehicle, 1000, LocalDate.now(), 10, 80, MotoType.ROAD);
+    Moto moto = VehiculeBuilder.setMoto(vehicle, 1000, LocalDate.now(), 10, 80, MotoType.ROAD);
     assertNotNull(moto);
     assertEquals(80, moto.getCylinder());
   }
@@ -48,25 +48,25 @@ public class VehiculeBuilderTest {
   @Test
   void testBuildCar_When_vehicleIsNull() {
 
-    assertThrows(IllegalArgumentException.class, () -> VehiculeBuilder.getCar(null, 1000,
+    assertThrows(IllegalArgumentException.class, () -> VehiculeBuilder.setCar(null, 1000,
         LocalDate.now(), 10, Door.N2, GearBox.AUTO, CarType.CONVERTIBLE));
 
-    assertThrows(IllegalArgumentException.class, () -> VehiculeBuilder.getCar(vehicle, 1000,
+    assertThrows(IllegalArgumentException.class, () -> VehiculeBuilder.setCar(vehicle, 1000,
         LocalDate.now(), 10, Door.N2, null, CarType.CONVERTIBLE));
 
-    assertThrows(IllegalArgumentException.class, () -> VehiculeBuilder.getCar(vehicle, 1000,
+    assertThrows(IllegalArgumentException.class, () -> VehiculeBuilder.setCar(vehicle, 1000,
         LocalDate.now(), 10, null, GearBox.AUTO, CarType.CONVERTIBLE));
   }
 
   @Test
   void testBuildMoto_When_VehicleIsNull() {
     assertThrows(IllegalArgumentException.class,
-        () -> VehiculeBuilder.getMoto(null, 1000, LocalDate.now(), 10, 80, MotoType.ROAD));
+        () -> VehiculeBuilder.setMoto(null, 1000, LocalDate.now(), 10, 80, MotoType.ROAD));
   }
 
   @Test
   void testBuildVelo_When_callMethodeBuild() {
-    Bike velo = VehiculeBuilder.getVelo(vehicle, 3, true, BikeType.CITY);
+    Bike velo = VehiculeBuilder.setVelo(vehicle, 3, true, BikeType.CITY);
     assertNotNull(velo);
     assertEquals(3, velo.getChainrings());
     assertEquals(1, velo.getId());
