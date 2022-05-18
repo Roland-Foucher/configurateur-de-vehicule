@@ -71,4 +71,36 @@ public class Vehicle {
     return description;
   }
 
+  public void setId(Integer id) {
+    this.id = id;
+  }
+
+  public void setMark(String mark) {
+    this.mark = mark;
+  }
+
+  public void setModel(String model) {
+    this.model = model;
+  }
+
+  public void setColor(String color) {
+    this.color = color;
+  }
+
+  public void setPrice(BigDecimal price) {
+    this.price = price;
+  }
+
+  public void setPurshasePrice(BigDecimal purshasePrice) {
+    this.purshasePrice = purshasePrice;
+  }
+
+  public void setPurshaseDate(LocalDate purshaseDate) {
+    this.purshaseDate = purshaseDate;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
 }

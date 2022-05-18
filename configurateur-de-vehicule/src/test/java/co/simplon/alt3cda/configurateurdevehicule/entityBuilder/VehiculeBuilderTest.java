@@ -7,18 +7,18 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import co.simplon.alt3cda.configurateurdevehicule.entity.Bike;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Car;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Moto;
-import co.simplon.alt3cda.configurateurdevehicule.entity.MotorVehicle;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Vehicle;
+import co.simplon.alt3cda.configurateurdevehicule.enumClass.BikeType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.CarType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.Door;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.GearBox;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.MotoType;
 
 
-public class MotorVehiculeBuilderTest {
+public class VehiculeBuilderTest {
 
   private Vehicle vehicle;
 
@@ -31,7 +31,7 @@ public class MotorVehiculeBuilderTest {
   @Test
   void testBuildCar_When_calledMethode() {
 
-    Car car = MotorVehiculeBuilder.getCar(vehicle, 1000, LocalDate.now(), 10, Door.N2, GearBox.AUTO,
+    Car car = VehiculeBuilder.getCar(vehicle, 1000, LocalDate.now(), 10, Door.N2, GearBox.AUTO,
         CarType.CONVERTIBLE);
     assertNotNull(car);
     assertEquals(1, car.getId());
@@ -40,7 +40,7 @@ public class MotorVehiculeBuilderTest {
 
   @Test
   void testBuildMoto_When_calledMethode() {
-    Moto moto = MotorVehiculeBuilder.getMoto(vehicle, 1000, LocalDate.now(), 10, 80, MotoType.ROAD);
+    Moto moto = VehiculeBuilder.getMoto(vehicle, 1000, LocalDate.now(), 10, 80, MotoType.ROAD);
     assertNotNull(moto);
     assertEquals(80, moto.getCylinder());
   }
@@ -48,19 +48,28 @@ public class MotorVehiculeBuilderTest {
   @Test
   void testBuildCar_When_vehicleIsNull() {
 
-    assertThrows(IllegalArgumentException.class, () -> MotorVehiculeBuilder.getCar(null, 1000,
+    assertThrows(IllegalArgumentException.class, () -> VehiculeBuilder.getCar(null, 1000,
         LocalDate.now(), 10, Door.N2, GearBox.AUTO, CarType.CONVERTIBLE));
 
-    assertThrows(IllegalArgumentException.class, () -> MotorVehiculeBuilder.getCar(vehicle, 1000,
+    assertThrows(IllegalArgumentException.class, () -> VehiculeBuilder.getCar(vehicle, 1000,
         LocalDate.now(), 10, Door.N2, null, CarType.CONVERTIBLE));
 
-    assertThrows(IllegalArgumentException.class, () -> MotorVehiculeBuilder.getCar(vehicle, 1000,
+    assertThrows(IllegalArgumentException.class, () -> VehiculeBuilder.getCar(vehicle, 1000,
         LocalDate.now(), 10, null, GearBox.AUTO, CarType.CONVERTIBLE));
   }
 
   @Test
   void testBuildMoto_When_VehicleIsNull() {
     assertThrows(IllegalArgumentException.class,
-        () -> MotorVehiculeBuilder.getMoto(null, 1000, LocalDate.now(), 10, 80, MotoType.ROAD));
+        () -> VehiculeBuilder.getMoto(null, 1000, LocalDate.now(), 10, 80, MotoType.ROAD));
+  }
+
+  @Test
+  void testBuildVelo_When_callMethodeBuild() {
+    Bike velo = VehiculeBuilder.getVelo(vehicle, 3, true, BikeType.CITY);
+    assertNotNull(velo);
+    assertEquals(3, velo.getChainrings());
+    assertEquals(1, velo.getId());
+
   }
 }
