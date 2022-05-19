@@ -52,6 +52,7 @@ public class VehicleRepositoryTest {
     vehicleRepository.save(car);
     assertEquals(1, vehicleRepository.findById(1).get().getId());
     assertEquals(VehiculeType.Car, vehicleRepository.findById(1).get().getVehiculeType());
+    assertEquals(CarType.SEDAN, ((Car)vehicleRepository.findById(1).get()).getCarType());
     
 
   }

@@ -21,15 +21,11 @@ public class AllVehiculeController {
   @Autowired
   private InitDatabase initDatabase;
 
-  @Autowired
-  private VehiculeFactory vehiculeFactory;
-
 
   @GetMapping("")
   public ResponseEntity<List<Vehicle>> getAllVehicles() throws VehicleNotInEnumException, VehiculeNotInDatabaseException {
 
     initDatabase.init();
-    Vehicle vehicle = vehicleRepository.findById(1).get();
     
     return ResponseEntity.ok(vehicleRepository.findAll());
   }
