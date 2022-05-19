@@ -1,29 +1,60 @@
 package co.simplon.alt3cda.configurateurdevehicule.entityBuilder;
 
 import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import co.simplon.alt3cda.configurateurdevehicule.entity.Bike;
+import co.simplon.alt3cda.configurateurdevehicule.entity.Car;
+import co.simplon.alt3cda.configurateurdevehicule.entity.Moto;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Vehicle;
-import co.simplon.alt3cda.configurateurdevehicule.enumClass.Door;
-import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeEnum;
+import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeType;
+import co.simplon.alt3cda.configurateurdevehicule.exception.VehicleNotInEnumException;
+import co.simplon.alt3cda.configurateurdevehicule.exception.VehiculeNotInDatabaseException;
+import co.simplon.alt3cda.configurateurdevehicule.repository.VehicleRepository;
 
+@Service
 public class VehiculeFactory {
 
-  // public static Optional<? extends Vehicle> getVehicule(VehiculeEnum vehiculeEnum) throws
-  // Exception {
-  // switch (vehiculeEnum) {
+  private Bike bike;
+  private Moto moto;
+  private Car car;
 
-  // case Car:
-  // return VehiculeBuilder.getCar(vehicle, vehiculeOption.getDoor(),
-  // vehiculeOption.getGearBox());
+  @Autowired
+  private VehicleRepository vehicleRepository;
 
-  // case Moto:
-  // return VehiculeBuilder.getMoto(vehicle, vehiculeOption.getCylinder());
+  private void setVehicule(Integer id) throws VehicleNotInEnumException, VehiculeNotInDatabaseException {
+    
+    Optional<Vehicle> optVehicle = vehicleRepository.findById(id);
+    VehiculeType vehiculeType = vehicleRepository.findById(id).get().getVehiculeType();
 
-  // case Bike:
-  // return VehiculeBuilder.getVelo(vehicle, vehiculeOption.getChainrings(),
-  // vehiculeOption.isAntitheft());
+    switch (vehiculeType) {
+      case Car:
+        this.car =  optVehicle.map(el -> (Car) el).orElseThrow(VehiculeNotInDatabaseException::new);
 
-  // default:
-  // throw new Exception("this Vehicule don't exist !");
-  // }
-  // }
+      case Moto:
+        this.moto = optVehicle.map(el -> (Moto) el).orElseThrow(VehiculeNotInDatabaseException::new);
+
+      case Bike:
+        this.bike = optVehicle.map(el -> (Bike) el).orElseThrow(VehiculeNotInDatabaseException::new);
+
+      default:
+        throw new VehicleNotInEnumException();
+    }
+  }
+
+  public Bike getBikeCasted(int id) throws VehicleNotInEnumException, VehiculeNotInDatabaseException {
+    setVehicule(id);
+    return bike;
+  }
+
+  public Moto getMotoCasted(int id) throws VehicleNotInEnumException, VehiculeNotInDatabaseException {
+    setVehicule(id);
+    return moto;
+  }
+
+  public Car getCarCasted(int id) throws VehicleNotInEnumException, VehiculeNotInDatabaseException {
+    setVehicule(id);
+    return car;
+  }
+
 }

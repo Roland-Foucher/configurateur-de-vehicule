@@ -1,34 +1,47 @@
 package co.simplon.alt3cda.configurateurdevehicule.entityBuilder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import java.math.BigDecimal;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import co.simplon.alt3cda.configurateurdevehicule.entity.Vehicle;
-import co.simplon.alt3cda.configurateurdevehicule.enumClass.CarType;
-import co.simplon.alt3cda.configurateurdevehicule.enumClass.Door;
-import co.simplon.alt3cda.configurateurdevehicule.enumClass.GearBox;
-import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeEnum;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Commit;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.annotation.DirtiesContext.ClassMode;
+import org.springframework.test.context.ActiveProfiles;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Bike;
+import co.simplon.alt3cda.configurateurdevehicule.entity.Car;
+import co.simplon.alt3cda.configurateurdevehicule.exception.VehicleNotInEnumException;
+import co.simplon.alt3cda.configurateurdevehicule.exception.VehiculeNotInDatabaseException;
+import co.simplon.alt3cda.configurateurdevehicule.repository.VehicleRepository;
+import co.simplon.alt3cda.configurateurdevehicule.service.InitDatabase;
 
+@SpringBootTest
+@ActiveProfiles("test")
+@DirtiesContext(classMode =  ClassMode.BEFORE_EACH_TEST_METHOD)
 public class VehiculeFactoryTest {
 
-  private Vehicle vehicle;
+  @Autowired
+  private InitDatabase initDatabase;
+
+  @Autowired
+  private VehicleRepository vehicleRepository;
+
+  @Autowired
+  private VehiculeFactory vehiculeFactory;
 
   @BeforeEach
+  @Commit
   void init() {
-    vehicle = new Vehicle(1, "mark", "model", "color", new BigDecimal(10.20), new BigDecimal(100),
-        LocalDate.now(), "C'est un superbe vehicule");
-
+    initDatabase.init();
+    
   }
 
   @Test
-  void testGetVehicule() throws Exception {
-
-    // Vehicle velo = VehiculeFactory.getVehicule(vehicle, VehiculeEnum.Velo, );
-    // assertEquals(5, ((Velo) velo).getChainrings());
-
-
+  void testGetCar() throws VehicleNotInEnumException, VehiculeNotInDatabaseException{
+    assertEquals(Car.class, vehiculeFactory.getBikeCasted(1));
+   
   }
 }

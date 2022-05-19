@@ -6,6 +6,4 @@ import co.simplon.alt3cda.configurateurdevehicule.entity.Vehicle;
 
 @Repository
 public interface VehicleRepository extends JpaRepository<Vehicle, Integer> {
-
-
 }

@@ -1,6 +1,5 @@
 package co.simplon.alt3cda.configurateurdevehicule.entityBuilder;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import org.springframework.util.Assert;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Bike;
@@ -15,21 +14,8 @@ import co.simplon.alt3cda.configurateurdevehicule.enumClass.MotoType;
 
 public abstract class VehiculeBuilder {
 
-  public static Vehicle setVehicule(Integer id, String mark, String model, String color,
-      BigDecimal price, BigDecimal purchasePrice, LocalDate purshaseDate, String description) {
-    Vehicle vehicle = new Vehicle();
-    vehicle.setId(id);
-    vehicle.setMark(mark);
-    vehicle.setModel(model);
-    vehicle.setColor(color);
-    vehicle.setPrice(price);
-    vehicle.setPurshaseDate(purshaseDate);
-    vehicle.setDescription(description);
-    return vehicle;
 
-  }
-
-  public static Bike setVelo(Vehicle vehicle, int chainrings, boolean antitheft, BikeType type) {
+  public static Bike setBike(Vehicle vehicle, int chainrings, boolean antitheft, BikeType type) {
     Assert.notNull(vehicle, "vehicle is null");
     Assert.notNull(type, "type of bike is null");
 

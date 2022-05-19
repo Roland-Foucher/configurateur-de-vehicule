@@ -3,7 +3,6 @@ package co.simplon.alt3cda.configurateurdevehicule.entityBuilder;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,6 +15,7 @@ import co.simplon.alt3cda.configurateurdevehicule.enumClass.CarType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.Door;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.GearBox;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.MotoType;
+import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeType;
 
 
 public class VehiculeBuilderTest {
@@ -24,8 +24,8 @@ public class VehiculeBuilderTest {
 
   @BeforeEach
   void init() {
-    vehicle = new Vehicle(1, "mark", "model", "color", new BigDecimal(10.20), new BigDecimal(100),
-        LocalDate.now(), "C'est un superbe vehicule");
+    vehicle = new Vehicle(1, "mark", "model", "color", 10.20, 100.0, LocalDate.now(),
+        "C'est un superbe vehicule", VehiculeType.Car);
   }
 
   @Test
@@ -66,7 +66,7 @@ public class VehiculeBuilderTest {
 
   @Test
   void testBuildVelo_When_callMethodeBuild() {
-    Bike velo = VehiculeBuilder.setVelo(vehicle, 3, true, BikeType.CITY);
+    Bike velo = VehiculeBuilder.setBike(vehicle, 3, true, BikeType.CITY);
     assertNotNull(velo);
     assertEquals(3, velo.getChainrings());
     assertEquals(1, velo.getId());
