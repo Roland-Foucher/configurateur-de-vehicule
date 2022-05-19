@@ -14,11 +14,11 @@ import org.springframework.test.annotation.DirtiesContext.MethodMode;
 import org.springframework.test.context.ActiveProfiles;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Car;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Vehicle;
-import co.simplon.alt3cda.configurateurdevehicule.entityBuilder.VehiculeBuilder;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.CarType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.Door;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.GearBox;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeType;
+import co.simplon.alt3cda.configurateurdevehicule.service.InitDatabase;
 
 @SpringBootTest
 @ActiveProfiles("test")
@@ -28,32 +28,34 @@ public class VehicleRepositoryTest {
   @Autowired
   VehicleRepository vehicleRepository;
 
-  Vehicle vehicle;
+  private Car car;
 
   @BeforeEach
   void init() {
-    vehicle = new Vehicle(1, "mark", "model", "color", 10.20, 100.0, LocalDate.now(),
-        "C'est un superbe vehicule", VehiculeType.Car);
+    car = new Car.Builder(new Vehicle(3000.0, 4000.0, VehiculeType.Car), 
+                                  CarType.SEDAN, Door.N5, 
+                                  GearBox.MANUAL)
+                      .setId(1)
+                      .setColor("red")
+                      .setMark("Peugeot")
+                      .setModel("306")
+                      .setPurshaseDate(LocalDate.now())
+                      .setLaunchDate(LocalDate.now())
+                      .setKilometers(86000)
+                      .setPower(100)
+                      .build();
   }
 
   @Test
   void testSaveVehicule() {
 
-    vehicleRepository.save(vehicle);
+    vehicleRepository.save(car);
     assertEquals(1, vehicleRepository.findById(1).get().getId());
     assertEquals(VehiculeType.Car, vehicleRepository.findById(1).get().getVehiculeType());
-
-  }
-
-  @Test
-  void testsaveCar() {
-    Car car = VehiculeBuilder.setCar(vehicle, 200, LocalDate.now(), 100, Door.N2, GearBox.AUTO,
-        CarType.CONVERTIBLE);
-    vehicleRepository.save(car);
-    assertNotNull(vehicleRepository.findById(1).get());
     
 
   }
+    
 
   @Test
   void testResetDatabaseTest() {

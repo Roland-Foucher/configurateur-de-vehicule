@@ -5,9 +5,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.MotoType;
 
 @Entity
+@OnDelete(action = OnDeleteAction.CASCADE)
 public class Moto extends Vehicle {
   @Column(columnDefinition = "INT unsigned")
   private int cylinder;
@@ -21,15 +24,8 @@ public class Moto extends Vehicle {
   private int power;
 
   @Enumerated(EnumType.STRING)
-  @Column (nullable = false)
+  @Column (columnDefinition = "ENUM('SPORT', 'ROAD', 'ROADSTER')", nullable = false)
   private MotoType motoType;
-
-
-  public Moto(Vehicle vehicle) {
-    super(vehicle.getId(), vehicle.getMark(), vehicle.getModel(), vehicle.getColor(),
-        vehicle.getPrice(), vehicle.getPurshasePrice(), vehicle.getPurshaseDate(),
-        vehicle.getDescription(), vehicle.getVehiculeType());
-  }
 
   public Moto() {}
 
@@ -37,40 +33,92 @@ public class Moto extends Vehicle {
     return cylinder;
   }
 
-  public void setCylinder(int cylinder) {
-    this.cylinder = cylinder;
-  }
-
   public MotoType getMotoType() {
     return motoType;
-  }
-
-  public void setMotoType(MotoType motoType) {
-    this.motoType = motoType;
   }
 
   public int getKilometers() {
     return kilometers;
   }
 
-  public void setKilometers(int kilometers) {
-    this.kilometers = kilometers;
-  }
-
   public LocalDate getLaunchDate() {
     return launchDate;
-  }
-
-  public void setLaunchDate(LocalDate launchDate) {
-    this.launchDate = launchDate;
   }
 
   public int getPower() {
     return power;
   }
 
-  public void setPower(int power) {
-    this.power = power;
+  public static class Builder {
+
+    private Moto moto;
+
+    public Builder(Vehicle vehicule, MotoType motoType) {
+      moto = new Moto();
+      moto.setPrice(vehicule.getPrice());
+      moto.setPurshasePrice(vehicule.getPurshasePrice());
+      moto.setVehiculeType(vehicule.getVehiculeType());
+      moto.motoType = motoType;
+    }
+
+    public Builder setId(Integer id) {
+      moto.setId(id);
+      return this;
+    }
+
+    public Builder setMark(String mark) {
+      moto.setMark(mark);
+      return this;
+
+    }
+
+    public Builder setModel(String model) {
+      moto.setModel(model);
+      return this;
+    }
+
+    public Builder setColor(String color) {
+      moto.setColor(color);
+      return this;
+    }
+
+    public Builder setPurshaseDate(LocalDate purshaseDate) {
+      moto.setPurshaseDate(purshaseDate);
+      return this;
+    }
+
+    public Builder setDescription(String description) {
+      moto.setDescription(description);
+      return this;
+    }
+
+    public Builder setCylinder(int cylinder) {
+      moto.cylinder = cylinder;
+      return this;
+    }
+
+    public Builder setKilometers(int kilometers) {
+      moto.kilometers = kilometers;
+      return this;
+
+    }
+
+    public Builder setLaunchDate(LocalDate launchDate) {
+      moto.launchDate = launchDate;
+      return this;
+    }
+
+    public Builder setPower(int power) {
+      moto.power = power;
+      return this;
+    }
+
+    public Moto build() {
+      return moto;
+    }
   }
+
+
+   
 
 }

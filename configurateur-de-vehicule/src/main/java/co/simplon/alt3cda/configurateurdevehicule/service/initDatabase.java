@@ -8,7 +8,6 @@ import co.simplon.alt3cda.configurateurdevehicule.entity.Bike;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Car;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Moto;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Vehicle;
-import co.simplon.alt3cda.configurateurdevehicule.entityBuilder.VehiculeBuilder;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.BikeType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.CarType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.Door;
@@ -26,64 +25,54 @@ public class InitDatabase {
   @Transactional
   public void init() {
     if (vehicleRepository.findAll().size() == 0){
-      Vehicle vehicle = new Vehicle.Builder()
-        .setId(1)
-        .setColor("red")
-        .setMark("Peugeot")
-        .setModel("306")
-        .setPrice(3000.0)
-        .setPurshaseDate(LocalDate.now())
-        .setPurshasePrice(4000.0)
-        .setVehiculeType(VehiculeType.Car).build();
 
-    Car car = VehiculeBuilder.setCar(vehicle, 86000, LocalDate.now(), 100, Door.N5, GearBox.MANUAL,
-        CarType.SEDAN);
+      Car car = new Car.Builder(new Vehicle(3000.0, 4000.0, VehiculeType.Car), 
+                                    CarType.SEDAN, Door.N5, 
+                                    GearBox.MANUAL)
+                        .setId(1)
+                        .setColor("red")
+                        .setMark("Peugeot")
+                        .setModel("306")
+                        .setPurshaseDate(LocalDate.now())
+                        .setLaunchDate(LocalDate.now())
+                        .setKilometers(86000)
+                        .setPower(100)
+                        .build();
 
     vehicleRepository.save(car);
-    
-    Vehicle vehicle2 = new Vehicle.Builder()
-      .setId(2)
-      .setColor("black")
-      .setMark("Renault")
-      .setModel("Clio")
-      .setPrice(2300.0)
-      .setPurshaseDate(LocalDate.now())
-      .setPurshasePrice(3000.0)
-      .setVehiculeType(VehiculeType.Car)
-      .build();
 
-    Car car2 = VehiculeBuilder.setCar(vehicle2, 134000, LocalDate.now(), 100, Door.N5, GearBox.MANUAL,
-        CarType.SEDAN);
+    Car car2 = new Car.Builder(new Vehicle(2300.0, 3000.0, VehiculeType.Car), 
+                                  CarType.SEDAN, Door.N5, 
+                                  GearBox.MANUAL)
+                        .setId(2)
+                        .setColor("black")
+                        .setMark("Renault")
+                        .setModel("Clio")
+                        .setPurshaseDate(LocalDate.now())
+                        .setLaunchDate(LocalDate.now())
+                        .setKilometers(13400)
+                        .setPower(100)
+                        .build();
 
     vehicleRepository.save(car2);
 
-    Vehicle vehicle3 = new Vehicle.Builder()
-      .setId(3)
-      .setColor("blue")
-      .setMark("dectlon")
-      .setModel("vrun")
-      .setPrice(150.90)
-      .setPurshaseDate(LocalDate.now())
-      .setPurshasePrice(200.0)
-      .setVehiculeType(VehiculeType.Bike)
-      .build();
+    Bike bike = new Bike.Builder(new Vehicle(150.9, 200.0, VehiculeType.Bike), BikeType.CITY)
+                        .setId(3)
+                        .setColor("blue")
+                        .setMark("decatlon")
+                        .setModel("vrun")
+                        .setPurshaseDate(LocalDate.now())
+                        .build();
 
-    Bike bike = VehiculeBuilder.setBike(vehicle3, 4, false, BikeType.CITY);
     vehicleRepository.save(bike);
 
-    Vehicle vehicle4 = new Vehicle.Builder()
-    .setId(4)
-    .setColor("green")
-    .setMark("Maserati")
-    .setModel("grosseMoto")
-    .setPrice(8000.00)
-    .setPurshaseDate(LocalDate.now())
-    .setPurshasePrice(6000.0)
-    .setVehiculeType(VehiculeType.Moto)
-    .build();
-
-  Moto moto = VehiculeBuilder.setMoto(vehicle4, 80000, LocalDate.now(), 100, 80, MotoType.SPORT);
-  vehicleRepository.save(bike);
+    Moto moto = new Moto.Builder(new Vehicle(8000.0, 6000.0, VehiculeType.Moto), MotoType.SPORT)
+                        .setId(4)
+                        .setColor("green")
+                        .setMark("Maserati")
+                        .setModel("grosseMoto")
+                        .setPurshaseDate(LocalDate.now())
+                        .build();
       
 
   vehicleRepository.save(moto);
