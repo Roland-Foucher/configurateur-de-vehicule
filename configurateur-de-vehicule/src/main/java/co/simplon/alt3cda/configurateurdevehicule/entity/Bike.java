@@ -7,7 +7,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.lang.NonNull;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.BikeType;
 
 @Entity

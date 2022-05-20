@@ -1,7 +1,6 @@
 package co.simplon.alt3cda.configurateurdevehicule.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.annotation.DirtiesContext.ClassMode;
-import org.springframework.test.annotation.DirtiesContext.MethodMode;
 import org.springframework.test.context.ActiveProfiles;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Car;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Vehicle;
@@ -18,7 +16,6 @@ import co.simplon.alt3cda.configurateurdevehicule.enumClass.CarType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.Door;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.GearBox;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeType;
-import co.simplon.alt3cda.configurateurdevehicule.service.InitDatabase;
 
 @SpringBootTest
 @ActiveProfiles("test")

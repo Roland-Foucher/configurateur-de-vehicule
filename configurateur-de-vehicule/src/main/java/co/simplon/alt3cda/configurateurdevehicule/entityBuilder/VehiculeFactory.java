@@ -1,11 +1,7 @@
 package co.simplon.alt3cda.configurateurdevehicule.entityBuilder;
 
-import java.util.Map;
-import java.util.Optional;
-import com.fasterxml.jackson.core.JsonParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Bike;
@@ -13,7 +9,6 @@ import co.simplon.alt3cda.configurateurdevehicule.entity.Car;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Moto;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Vehicle;
 import co.simplon.alt3cda.configurateurdevehicule.entity.VehicleDTO;
-import co.simplon.alt3cda.configurateurdevehicule.enumClass.BikeType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeType;
 import co.simplon.alt3cda.configurateurdevehicule.exception.VehicleNotInEnumException;
 import co.simplon.alt3cda.configurateurdevehicule.exception.VehiculeNotInDatabaseException;
