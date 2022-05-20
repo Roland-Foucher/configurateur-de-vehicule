@@ -12,7 +12,7 @@ import co.simplon.alt3cda.configurateurdevehicule.repository.VehicleRepository;
 import co.simplon.alt3cda.configurateurdevehicule.service.InitDatabase;
 
 @RestController
-public class AllVehiculeController {
+public class AllVehicleController {
 
   @Autowired
   private VehicleRepository vehicleRepository;

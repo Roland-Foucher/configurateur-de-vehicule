@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import org.springframework.util.Assert;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeType;
 
 
@@ -38,11 +39,16 @@ public class Vehicle {
   private String description;
 
   @Enumerated(EnumType.STRING)
-  @Column (nullable = false)
+  @Column (columnDefinition = "ENUM('CAR', 'MOTO', 'BIKE')", nullable = false)
   private VehiculeType VehiculeType;
 
   public Vehicle() {}
   public Vehicle(Double price, Double purshasePrice, VehiculeType vehiculeType) {
+    
+    Assert.notNull(price, "price is null");
+    Assert.notNull(purshasePrice, "purshaseprice is null");
+    Assert.notNull(vehiculeType, "vehiculeType is null");
+
     this.price = price;
     this.purshasePrice = purshasePrice;
     this.VehiculeType = vehiculeType;

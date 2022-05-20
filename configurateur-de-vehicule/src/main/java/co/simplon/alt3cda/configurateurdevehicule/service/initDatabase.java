@@ -26,7 +26,7 @@ public class InitDatabase {
   public void init() {
     if (vehicleRepository.findAll().size() == 0){
 
-      Car car = new Car.Builder(new Vehicle(3000.0, 4000.0, VehiculeType.Car), 
+      Car car = new Car.Builder(new Vehicle(3000.0, 4000.0, VehiculeType.CAR), 
                                     CarType.SEDAN, Door.N5, 
                                     GearBox.MANUAL)
                         .setId(1)
@@ -41,7 +41,7 @@ public class InitDatabase {
 
     vehicleRepository.save(car);
 
-    Car car2 = new Car.Builder(new Vehicle(2300.0, 3000.0, VehiculeType.Car), 
+    Car car2 = new Car.Builder(new Vehicle(2300.0, 3000.0, VehiculeType.CAR), 
                                   CarType.SEDAN, Door.N5, 
                                   GearBox.MANUAL)
                         .setId(2)
@@ -56,7 +56,7 @@ public class InitDatabase {
 
     vehicleRepository.save(car2);
 
-    Bike bike = new Bike.Builder(new Vehicle(150.9, 200.0, VehiculeType.Bike), BikeType.CITY)
+    Bike bike = new Bike.Builder(new Vehicle(150.9, 200.0, VehiculeType.BIKE), BikeType.CITY)
                         .setId(3)
                         .setColor("blue")
                         .setMark("decatlon")
@@ -66,7 +66,7 @@ public class InitDatabase {
 
     vehicleRepository.save(bike);
 
-    Moto moto = new Moto.Builder(new Vehicle(8000.0, 6000.0, VehiculeType.Moto), MotoType.SPORT)
+    Moto moto = new Moto.Builder(new Vehicle(8000.0, 6000.0, VehiculeType.MOTO), MotoType.SPORT)
                         .setId(4)
                         .setColor("green")
                         .setMark("Maserati")

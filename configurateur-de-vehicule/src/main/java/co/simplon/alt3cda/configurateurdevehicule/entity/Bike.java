@@ -7,8 +7,12 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.util.Assert;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.BikeType;
 
+/**
+ * Les entités utilisent le design pattern builder pour créer les instances 
+ */
 @Entity
 @OnDelete(action = OnDeleteAction.CASCADE)
 public class Bike extends Vehicle {
@@ -17,7 +21,6 @@ public class Bike extends Vehicle {
   @Column(columnDefinition = "ENUM('ROAD', 'MOUNTAIN', 'CITY', 'RACE')", nullable = false)
   private BikeType bikeType;
 
-  
   @Column(columnDefinition = "TINYINT unsigned")
   private int chainrings;
   private boolean antitheft;
@@ -40,11 +43,14 @@ public class Bike extends Vehicle {
 
     private Bike bike;
 
-    public Builder(Vehicle vehicule, BikeType bikeType) {
+    public Builder(Vehicle vehicle, BikeType bikeType) {
+      Assert.notNull(vehicle, "vehicle is null");
+      Assert.notNull(bikeType, "bikeType is null");
+
       bike = new Bike();
-      bike.setPrice(vehicule.getPrice());
-      bike.setPurshasePrice(vehicule.getPurshasePrice());
-      bike.setVehiculeType(vehicule.getVehiculeType());
+      bike.setPrice(vehicle.getPrice());
+      bike.setPurshasePrice(vehicle.getPurshasePrice());
+      bike.setVehiculeType(vehicle.getVehiculeType());
       bike.bikeType = bikeType;
     }
 

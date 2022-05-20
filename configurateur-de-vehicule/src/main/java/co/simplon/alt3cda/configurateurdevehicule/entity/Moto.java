@@ -7,8 +7,12 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.util.Assert;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.MotoType;
 
+/**
+ * Les entités utilisent le design pattern builder pour créer les instances 
+ */
 @Entity
 @OnDelete(action = OnDeleteAction.CASCADE)
 public class Moto extends Vehicle {
@@ -53,11 +57,14 @@ public class Moto extends Vehicle {
 
     private Moto moto;
 
-    public Builder(Vehicle vehicule, MotoType motoType) {
+    public Builder(Vehicle vehicle, MotoType motoType) {
+      Assert.notNull(vehicle, "vehicle is null");
+      Assert.notNull(motoType, "MotoType is null");
+      
       moto = new Moto();
-      moto.setPrice(vehicule.getPrice());
-      moto.setPurshasePrice(vehicule.getPurshasePrice());
-      moto.setVehiculeType(vehicule.getVehiculeType());
+      moto.setPrice(vehicle.getPrice());
+      moto.setPurshasePrice(vehicle.getPurshasePrice());
+      moto.setVehiculeType(vehicle.getVehiculeType());
       moto.motoType = motoType;
     }
 

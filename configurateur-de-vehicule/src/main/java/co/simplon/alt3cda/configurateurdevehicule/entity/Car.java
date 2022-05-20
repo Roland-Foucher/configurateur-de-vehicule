@@ -7,10 +7,14 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.util.Assert;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.CarType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.Door;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.GearBox;
 
+/**
+ * Les entités utilisent le design pattern builder pour créer les instances 
+ */
 @Entity
 @OnDelete(action = OnDeleteAction.CASCADE)
 public class Car extends Vehicle {
@@ -65,11 +69,17 @@ public class Car extends Vehicle {
 
     private Car car;
 
-    public Builder(Vehicle vehicule, CarType carType, Door door,GearBox gearBox) {
+    public Builder(Vehicle vehicle, CarType carType, Door door,GearBox gearBox) {
+      
+      Assert.notNull(vehicle, "vehicle is null");
+      Assert.notNull(carType, "carType is null");
+      Assert.notNull(door, "door is null");
+      Assert.notNull(gearBox, "gearBox is null");
+
       car = new Car();
-      car.setPrice(vehicule.getPrice());
-      car.setPurshasePrice(vehicule.getPurshasePrice());
-      car.setVehiculeType(vehicule.getVehiculeType());
+      car.setPrice(vehicle.getPrice());
+      car.setPurshasePrice(vehicle.getPurshasePrice());
+      car.setVehiculeType(vehicle.getVehiculeType());
       car.carType = carType;
       car.door = door;
       car.gearBox = gearBox;

@@ -1,12 +1,21 @@
 package co.simplon.alt3cda.configurateurdevehicule.entity;
 
 import java.time.LocalDate;
+import javax.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.BikeType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.CarType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.Door;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.GearBox;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.MotoType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeType;
+
+/**
+ * utilisation du pattern DTO pour transporter les données du front au backend
+ */
 
 public class VehicleDTO {
   private Integer id;
@@ -29,6 +38,7 @@ public class VehicleDTO {
   private BikeType bikeType;
   private int chainrings;
   private boolean antitheft;
+  
   public VehicleDTO(Integer id, String mark, String model, String color, Double price,
       Double purshasePrice, LocalDate purshaseDate, String description,
       VehiculeType vehiculeType, int cylinder,int kilometers, LocalDate launchDate, 
