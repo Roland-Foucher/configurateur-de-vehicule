@@ -1,11 +1,6 @@
 package co.simplon.alt3cda.configurateurdevehicule.entity;
 
 import java.time.LocalDate;
-import javax.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.BikeType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.CarType;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.Door;

@@ -26,10 +26,10 @@ public class Vehicle {
   private String model;
   private String color;
 
-  @Column(columnDefinition = "double unsigned", nullable = false)
+  @Column(columnDefinition = "DECIMAL(10,2) unsigned", nullable = false)
   private Double price;
 
-  @Column(columnDefinition = "double unsigned", nullable = false)
+  @Column(columnDefinition = "DECIMAL(10,2) unsigned", nullable = false)
   private Double purshasePrice;
 
   @Column(nullable = false)

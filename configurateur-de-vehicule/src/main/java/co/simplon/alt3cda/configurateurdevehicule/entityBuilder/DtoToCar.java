@@ -1,6 +1,5 @@
 package co.simplon.alt3cda.configurateurdevehicule.entityBuilder;
 
-import org.springframework.stereotype.Component;
 import co.simplon.alt3cda.configurateurdevehicule.entity.Car;
 import co.simplon.alt3cda.configurateurdevehicule.entity.VehicleDTO;
 
