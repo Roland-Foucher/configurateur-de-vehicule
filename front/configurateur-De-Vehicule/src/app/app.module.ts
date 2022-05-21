@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { VehicleCardComponent } from './vehicle-card/vehicle-card.component';
+import { VehiclesComponent } from './vehicles/vehicles/vehicles.component';
+import { VehicleService } from './service/vehicle.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -13,12 +16,14 @@ import { VehicleCardComponent } from './vehicle-card/vehicle-card.component';
     HeaderComponent,
     FooterComponent,
     VehicleCardComponent,
+    VehiclesComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [VehicleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
