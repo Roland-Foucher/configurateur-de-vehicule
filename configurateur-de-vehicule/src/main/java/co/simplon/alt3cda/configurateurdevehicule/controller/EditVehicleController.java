@@ -1,6 +1,8 @@
 package co.simplon.alt3cda.configurateurdevehicule.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,20 +28,20 @@ public class EditVehicleController {
   VehicleRepository vehicleRepository;
   
   @PostMapping("/save")
-  public ResponseEntity<String> save(@RequestBody VehicleDTO vehicleDTO){
+  public ResponseEntity<Vehicle> save(@RequestBody VehicleDTO vehicleDTO){
     Assert.notNull(vehicleDTO, "vehicule is null");
+    
     try {
-      if (vehiculeFactory.saveVehicle(vehicleDTO) != null){
-        return ResponseEntity.ok().build();
+      Vehicle savedVehicle = vehiculeFactory.saveVehicle(vehicleDTO);
+      if (savedVehicle != null){
+        return new ResponseEntity<Vehicle>(savedVehicle, HttpStatus.CREATED);
       }else{
         return ResponseEntity.internalServerError().build();
       }
     } catch (VehicleNotInEnumException e) {
       e.printStackTrace();
-      return ResponseEntity.internalServerError().body(e.getMessage());
-      
+      return ResponseEntity.internalServerError().build();
     }
-    
  }
 
   @GetMapping("/{id}")
@@ -52,13 +54,17 @@ public class EditVehicleController {
       return ResponseEntity.internalServerError().build();
     } catch (VehiculeNotInDatabaseException e) {
       e.printStackTrace();
-      return ResponseEntity.internalServerError().build();
+      return ResponseEntity.notFound().build();
     }
   }
 
   @GetMapping("/delete/{id}")
   public ResponseEntity<String> deleteOne(@PathVariable int id){
-    vehicleRepository.deleteById(id);
+    try{
+      vehicleRepository.deleteById(id);
+    }catch(EmptyResultDataAccessException e){
+      return ResponseEntity.notFound().build();
+    }
     if (vehicleRepository.findById(id).orElse(null) == null){
       return ResponseEntity.ok().build();
     }

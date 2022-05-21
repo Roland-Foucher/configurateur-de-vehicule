@@ -24,9 +24,17 @@ public class AllVehicleController {
   @GetMapping("")
   public ResponseEntity<List<Vehicle>> getAllVehicles() throws VehicleNotInEnumException, VehiculeNotInDatabaseException {
 
-    initDatabase.init();
     
-    return ResponseEntity.ok(vehicleRepository.findAll());
+    List<Vehicle> vehicles = vehicleRepository.findAll();
+    return vehicles.isEmpty() ? 
+      ResponseEntity.noContent().build() : 
+      ResponseEntity.ok(vehicleRepository.findAll());
+    
   }
 
+  @GetMapping("/initDatablase")
+    public ResponseEntity<String> initDatabase(){
+      initDatabase.init();
+      return ResponseEntity.ok().body("database init with default values");
+    }
 }
