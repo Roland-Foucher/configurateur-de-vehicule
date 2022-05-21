@@ -51,14 +51,14 @@ public class EditVehicleControllerTest {
   @Test
   void testDeleteOne() throws Exception {
     initDatabase.init();
-    mockMvc.perform(MockMvcRequestBuilders.get("/delete/1"))
+    mockMvc.perform(MockMvcRequestBuilders.delete("/1"))
                       .andExpect(MockMvcResultMatchers.status().isOk());
   }
 
   @Test
   void testDeleteOneNoPresent() throws Exception {
     
-    mockMvc.perform(MockMvcRequestBuilders.get("/delete/1"))
+    mockMvc.perform(MockMvcRequestBuilders.delete("/1"))
                       .andExpect(MockMvcResultMatchers.status().isNotFound());
   }
 
@@ -78,7 +78,7 @@ public class EditVehicleControllerTest {
 
   @Test
   void testSave() throws Exception {
-    mockMvc.perform(MockMvcRequestBuilders.post("/save")
+    mockMvc.perform(MockMvcRequestBuilders.put("/")
                         .content(jsonVehicle)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
