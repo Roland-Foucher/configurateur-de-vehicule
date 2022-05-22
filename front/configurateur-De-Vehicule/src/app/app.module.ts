@@ -11,9 +11,16 @@ import { VehicleService } from './service/vehicle.service';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { OneVehicleComponent } from './home/one-vehicle/one-vehicle.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { NewVehicleComponent } from './new-vehicle/new-vehicle.component';
 
 const appRoutes: Routes = [
-  { path: 'home', component: VehiclesComponent},
+  { path: 'vehicles', component: VehiclesComponent},
+  { path: 'vehicles/:id', component: OneVehicleComponent},
+  { path: 'new-vehicle', component: NewVehicleComponent},
+  { path: '', component: VehiclesComponent},
+  { path: 'not-found', component: NotFoundComponent},
+  { path: '**', redirectTo: '/not-found'}
 ]
 
 @NgModule({
