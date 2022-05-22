@@ -1,1 +1,80 @@
-<p>one-vehicle works!</p>
+<div *ngIf="vehicle$ | async as vehicle" class="container-fluid ">
+  <div class="text-center">
+    <img
+      [src]=imageSource
+      [alt]=vehicle.model
+      class="w-25 p-5 align-center">
+  </div>
+
+  <table class="table table-dark table-striped">
+    <tbody>
+      <tr>
+        <th scope="col">#</th>
+        <td>{{vehicle.id}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Mark</th>
+        <td>{{vehicle.mark}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Model</th>
+        <td scope="col">{{vehicle.model}}</td>
+      </tr>
+      <tr>
+        <th *ngIf="vehicle.color" scope="col">Color</th>
+        <td scope="col">{{vehicle.color}}</td>
+      </tr>
+      <tr>
+        <th scope="col">Price</th>
+        <td scope="col">{{vehicle.price}}</td>
+      </tr>
+      <tr *ngIf="vehicle.purshaseDate">
+        <th scope="col">PurshaseDate</th>
+        <td scope="col">{{vehicle.purshaseDate}}</td>
+      </tr>
+      <tr *ngIf="vehicle.cylinder">
+        <th scope="col">Cylinder</th>
+        <td scope="col">{{vehicle.cylinder}}</td>
+      </tr>
+      <tr *ngIf="vehicle.kilometers">
+        <th scope="col">Kilometers</th>
+        <td scope="col">{{vehicle.kilometers}}</td>
+      </tr>
+      <tr *ngIf="vehicle.launchDate">
+        <th scope="col">LaunchDate</th>
+        <td scope="col">{{vehicle.launchDate}}</td>
+      </tr>
+      <tr *ngIf="vehicle.power">
+        <th scope="col">Power</th>
+        <td scope="col">{{vehicle.power}}</td>
+      </tr>
+      <tr *ngIf="vehicle.motoType">
+        <th scope="col">MotoType</th>
+        <td scope="col">{{vehicle.motoType}}</td>
+      </tr>
+      <tr *ngIf="vehicle.carType">
+        <th scope="col">CarType</th>
+        <td scope="col">{{vehicle.carType}}</td>
+      </tr>
+      <tr *ngIf="vehicle.bikeType">
+        <th scope="col">BikeType</th>
+        <td scope="col">{{vehicle.bikeType}}</td>
+      </tr>
+      <tr *ngIf="vehicle.door">
+        <th scope="col">Door</th>
+        <td scope="col">{{vehicle.door}}</td>
+      </tr>
+      <tr *ngIf="vehicle.gearBox">
+        <th scope="col">Mode</th>
+        <td scope="col">{{vehicle.gearBox}}</td>
+      </tr>
+      <tr *ngIf="vehicle.antitheft">
+        <th scope="col">Antitheft</th>
+        <td scope="col">{{vehicle.antitheft}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div *ngIf="vehicle.description">
+    <p>{{vehicle.description}}</p>
+  </div>
+</div>

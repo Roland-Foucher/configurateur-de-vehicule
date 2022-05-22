@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { VehicleDto } from '../models/VehicleDto.models';
-import { catchError, Observable } from 'rxjs';
+import { catchError, map, Observable, of } from 'rxjs';
 import { SmallVehicleDTO } from '../models/SmallVehicleDTO.models';
+import { VehicleType } from '../enum/VehicleType';
+import { ImageUrl } from '../enum/ImageUrl';
 
 @Injectable({
   providedIn: 'root'
@@ -43,12 +45,21 @@ export class VehicleService {
       });
   }
 
-  initDatabase(): void{
+  initDatabase(): void
+  {
     this.httpClient
       .get(this.url + "/init-database")
       .subscribe({
         error: (e) => console.error(e),
         complete: () => console.log("database init")
       });
+  }
+
+  selectImageUrl(vehicle: VehicleDto | SmallVehicleDTO) : string
+  {
+    return  vehicle.vehiculeType === VehicleType.CAR ? ImageUrl.CAR:
+            vehicle.vehiculeType === VehicleType.MOTO ? ImageUrl.MOTO :
+            vehicle.vehiculeType === VehicleType.BIKE ? ImageUrl.BIKE :
+            ImageUrl.ERROR
   }
 }

@@ -4,6 +4,7 @@ import { Door } from "../enum/Door";
 import { GearBox } from "../enum/GearBox";
 import { MotoType } from "../enum/MotoType";
 import { VehicleType } from "../enum/VehicleType";
+import { SmallVehicleDTO } from "./SmallVehicleDTO.models";
 
 export class VehicleDto {
 
