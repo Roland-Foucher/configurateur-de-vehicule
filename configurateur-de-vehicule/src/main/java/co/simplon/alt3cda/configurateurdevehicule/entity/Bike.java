@@ -51,22 +51,13 @@ public class Bike extends Vehicle {
       bike.setPrice(vehicle.getPrice());
       bike.setPurshasePrice(vehicle.getPurshasePrice());
       bike.setVehiculeType(vehicle.getVehiculeType());
+      bike.setMark(vehicle.getMark());
+      bike.setModel(vehicle.getModel());
       bike.bikeType = bikeType;
     }
 
     public Builder setId(Integer id) {
       bike.setId(id);
-      return this;
-    }
-
-    public Builder setMark(String mark) {
-      bike.setMark(mark);
-      return this;
-
-    }
-
-    public Builder setModel(String model) {
-      bike.setModel(model);
       return this;
     }
 

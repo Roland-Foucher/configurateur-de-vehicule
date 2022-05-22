@@ -1,0 +1,18 @@
+<div class="card border-secondary bg-dark text-white mx-auto" style="max-width: 18rem">
+  <img
+    [src]=imageSource
+    class="card-img-top p-2"
+    [alt]= vehicle.model
+    style="width: 75%; margin: auto"
+  />
+  <div class="card-body">
+    <h5 class="card-title">{{vehicle.mark + " " + vehicle.model}}</h5>
+    <p class="card-text">{{vehicle.vehiculeType}}</p>
+    <p class="card-text">{{vehicle.price + " $"}}</p>
+    <a
+      href=""
+      class="btn btn-outline-secondary"
+      >all features</a
+    >
+  </div>
+</div>

@@ -5,10 +5,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { VehicleCardComponent } from './vehicle-card/vehicle-card.component';
-import { VehiclesComponent } from './vehicles/vehicles/vehicles.component';
+import { VehicleCardComponent } from './home/vehicle-card/vehicle-card.component';
+import { VehiclesComponent } from './home/vehicles/vehicles.component';
 import { VehicleService } from './service/vehicle.service';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule, Routes } from '@angular/router';
+import { OneVehicleComponent } from './home/one-vehicle/one-vehicle.component';
+
+const appRoutes: Routes = [
+  { path: 'home', component: VehiclesComponent},
+]
 
 @NgModule({
   declarations: [
@@ -17,11 +23,13 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     VehicleCardComponent,
     VehiclesComponent,
+    OneVehicleComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [VehicleService],
   bootstrap: [AppComponent]

@@ -6,6 +6,10 @@ import co.simplon.alt3cda.configurateurdevehicule.entity.VehicleDTO;
 public class InitVehicle {
 
   protected Vehicle init (VehicleDTO vehicleDTO){
-    return new Vehicle(vehicleDTO.getPrice(), vehicleDTO.getPurshasePrice(), vehicleDTO.getVehiculeType());
+    return new Vehicle(vehicleDTO.getPrice(), 
+                        vehicleDTO.getPurshasePrice(), 
+                        vehicleDTO.getVehiculeType(),
+                        vehicleDTO.getMark(),
+                        vehicleDTO.getModel());
   }
 }

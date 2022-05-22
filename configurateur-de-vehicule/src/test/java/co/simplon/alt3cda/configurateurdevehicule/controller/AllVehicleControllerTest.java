@@ -27,7 +27,7 @@ public class AllVehicleControllerTest {
   @Test
   void testGetAllVehicles() throws Exception {
     initDatabase.init();
-    mockMvc.perform(MockMvcRequestBuilders.get("/"))
+    mockMvc.perform(MockMvcRequestBuilders.get("/api/"))
                       .andExpect(MockMvcResultMatchers.status().isOk())
                       .andExpect(MockMvcResultMatchers.jsonPath("$.[*]").exists())
                       .andExpect(MockMvcResultMatchers.jsonPath("$.[*].id").isNotEmpty());
@@ -35,7 +35,7 @@ public class AllVehicleControllerTest {
 
   @Test
   void testGetAllVehicles_When_NoVehicleInDatabase() throws Exception{
-    mockMvc.perform(MockMvcRequestBuilders.get("/"))
+    mockMvc.perform(MockMvcRequestBuilders.get("/api/"))
                       .andExpect(MockMvcResultMatchers.status().isNoContent());
   }
 

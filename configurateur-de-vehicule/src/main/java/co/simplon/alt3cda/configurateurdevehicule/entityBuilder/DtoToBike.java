@@ -11,8 +11,6 @@ public class DtoToBike extends InitVehicle implements IDtoToEntity<Bike> {
                     .setColor(vehicleDTO.getColor())
                     .setDescription(vehicleDTO.getDescription())
                     .setId(vehicleDTO.getId())
-                    .setMark(vehicleDTO.getMark())
-                    .setModel(vehicleDTO.getModel())
                     .setPurshaseDate(vehicleDTO.getPurshaseDate())
                     .setAntitheft(vehicleDTO.isAntitheft())
                     .setChainrings(vehicleDTO.getChainrings())

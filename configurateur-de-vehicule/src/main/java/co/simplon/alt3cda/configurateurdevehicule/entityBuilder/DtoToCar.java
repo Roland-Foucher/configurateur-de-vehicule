@@ -13,8 +13,6 @@ public class DtoToCar extends InitVehicle implements IDtoToEntity<Car> {
                   .setId(vehicleDTO.getId())
                   .setKilometers(vehicleDTO.getKilometers())
                   .setLaunchDate(vehicleDTO.getLaunchDate())
-                  .setMark(vehicleDTO.getMark())
-                  .setModel(vehicleDTO.getModel())
                   .setPower(vehicleDTO.getPower())
                   .setPurshaseDate(vehicleDTO.getPurshaseDate())
                   .build();

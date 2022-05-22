@@ -29,13 +29,11 @@ public class VehicleRepositoryTest {
 
   @BeforeEach
   void init() {
-    car = new Car.Builder(new Vehicle(3000.0, 4000.0, VehiculeType.CAR), 
+    car = new Car.Builder(new Vehicle(3000.0, 4000.0, VehiculeType.CAR ,"Peugeot", "306"), 
                                   CarType.SEDAN, Door.N5, 
                                   GearBox.MANUAL)
                       .setId(1)
                       .setColor("red")
-                      .setMark("Peugeot")
-                      .setModel("306")
                       .setPurshaseDate(LocalDate.now())
                       .setLaunchDate(LocalDate.now())
                       .setKilometers(86000)

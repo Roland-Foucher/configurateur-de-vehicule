@@ -65,22 +65,13 @@ public class Moto extends Vehicle {
       moto.setPrice(vehicle.getPrice());
       moto.setPurshasePrice(vehicle.getPurshasePrice());
       moto.setVehiculeType(vehicle.getVehiculeType());
+      moto.setMark(vehicle.getMark());
+      moto.setModel(vehicle.getModel());
       moto.motoType = motoType;
     }
 
     public Builder setId(Integer id) {
       moto.setId(id);
-      return this;
-    }
-
-    public Builder setMark(String mark) {
-      moto.setMark(mark);
-      return this;
-
-    }
-
-    public Builder setModel(String model) {
-      moto.setModel(model);
       return this;
     }
 

@@ -40,18 +40,22 @@ public class Vehicle {
 
   @Enumerated(EnumType.STRING)
   @Column (columnDefinition = "ENUM('CAR', 'MOTO', 'BIKE')", nullable = false)
-  private VehiculeType VehiculeType;
+  private VehiculeType vehiculeType;
 
   public Vehicle() {}
-  public Vehicle(Double price, Double purshasePrice, VehiculeType vehiculeType) {
+  public Vehicle(Double price, Double purshasePrice, VehiculeType vehiculeType, String mark, String model) {
     
     Assert.notNull(price, "price is null");
     Assert.notNull(purshasePrice, "purshaseprice is null");
     Assert.notNull(vehiculeType, "vehiculeType is null");
+    Assert.notNull(mark, "vehicle mark is null");
+    Assert.notNull(model, "vehicle model is null");
 
     this.price = price;
     this.purshasePrice = purshasePrice;
-    this.VehiculeType = vehiculeType;
+    this.vehiculeType = vehiculeType;
+    this.mark = mark;
+    this.model = model;
   }
 
   public Integer getId() {
@@ -86,16 +90,12 @@ public class Vehicle {
     return description;
   }
 
+  public VehiculeType getVehiculeType() {
+    return vehiculeType;
+  }
+
   protected void setId(Integer id) {
     this.id = id;
-  }
-
-  protected void setMark(String mark) {
-    this.mark = mark;
-  }
-
-  protected void setModel(String model) {
-    this.model = model;
   }
 
   protected void setColor(String color) {
@@ -118,12 +118,16 @@ public class Vehicle {
     this.description = description;
   }
 
-  public VehiculeType getVehiculeType() {
-    return VehiculeType;
+  protected void setVehiculeType(VehiculeType vehiculeType) {
+    this.vehiculeType = vehiculeType;
   }
 
-  protected void setVehiculeType(VehiculeType vehiculeType) {
-    VehiculeType = vehiculeType;
+  protected void setModel(String model) {
+    this.model = model;
+  }
+
+  protected void setMark(String mark) {
+    this.mark = mark;
   }
   
 }

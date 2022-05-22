@@ -13,8 +13,6 @@ public class DtoToMoto extends InitVehicle implements IDtoToEntity<Moto> {
                   .setId(vehicleDTO.getId())
                   .setKilometers(vehicleDTO.getKilometers())
                   .setLaunchDate(vehicleDTO.getLaunchDate())
-                  .setMark(vehicleDTO.getMark())
-                  .setModel(vehicleDTO.getModel())
                   .setPower(vehicleDTO.getPower())
                   .setPurshaseDate(vehicleDTO.getPurshaseDate())
                   .setCylinder(vehicleDTO.getCylinder())

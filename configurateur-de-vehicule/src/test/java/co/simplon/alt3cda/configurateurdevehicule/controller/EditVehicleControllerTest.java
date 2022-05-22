@@ -29,6 +29,7 @@ public class EditVehicleControllerTest {
   String jsonVehicle = """
     {
       \"model\": \"306\",
+      \"mark\": \"Peugeot\",
       \"color\": \"black\",
       \"price\": 3000.0,
       \"purshasePrice\": 4000.0,
@@ -51,34 +52,34 @@ public class EditVehicleControllerTest {
   @Test
   void testDeleteOne() throws Exception {
     initDatabase.init();
-    mockMvc.perform(MockMvcRequestBuilders.delete("/1"))
+    mockMvc.perform(MockMvcRequestBuilders.delete("/api/edit/1"))
                       .andExpect(MockMvcResultMatchers.status().isOk());
   }
 
   @Test
   void testDeleteOneNoPresent() throws Exception {
     
-    mockMvc.perform(MockMvcRequestBuilders.delete("/1"))
+    mockMvc.perform(MockMvcRequestBuilders.delete("/api/edit/1"))
                       .andExpect(MockMvcResultMatchers.status().isNotFound());
   }
 
   @Test
   void testGetOne() throws Exception {
     initDatabase.init();
-    mockMvc.perform(MockMvcRequestBuilders.get("/1"))
+    mockMvc.perform(MockMvcRequestBuilders.get("/api/edit/1"))
                       .andExpect(MockMvcResultMatchers.status().isOk())
                       .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1));
   }
 
   @Test
   void TestGetOneNoPresent() throws Exception {
-    mockMvc.perform(MockMvcRequestBuilders.get("/1"))
+    mockMvc.perform(MockMvcRequestBuilders.get("/api/edit/1"))
     .andExpect(MockMvcResultMatchers.status().isNotFound());
   }
 
   @Test
   void testSave() throws Exception {
-    mockMvc.perform(MockMvcRequestBuilders.put("/")
+    mockMvc.perform(MockMvcRequestBuilders.put("/api/edit/")
                         .content(jsonVehicle)
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))

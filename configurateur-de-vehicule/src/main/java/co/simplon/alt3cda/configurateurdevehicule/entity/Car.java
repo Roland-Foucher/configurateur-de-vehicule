@@ -80,6 +80,8 @@ public class Car extends Vehicle {
       car.setPrice(vehicle.getPrice());
       car.setPurshasePrice(vehicle.getPurshasePrice());
       car.setVehiculeType(vehicle.getVehiculeType());
+      car.setMark(vehicle.getMark());
+      car.setModel(vehicle.getModel());
       car.carType = carType;
       car.door = door;
       car.gearBox = gearBox;
@@ -87,17 +89,6 @@ public class Car extends Vehicle {
 
     public Builder setId(Integer id) {
       car.setId(id);
-      return this;
-    }
-
-    public Builder setMark(String mark) {
-      car.setMark(mark);
-      return this;
-
-    }
-
-    public Builder setModel(String model) {
-      car.setModel(model);
       return this;
     }
 

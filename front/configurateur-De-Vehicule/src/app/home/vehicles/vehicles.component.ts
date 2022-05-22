@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { SmallVehicleDTO } from 'src/app/models/SmallVehicleDTO.models';
 import { VehicleDto } from 'src/app/models/VehicleDto.models';
 import { VehicleService } from 'src/app/service/vehicle.service';
 
@@ -10,11 +11,11 @@ import { VehicleService } from 'src/app/service/vehicle.service';
 })
 export class VehiclesComponent implements OnInit {
 
-  vehicles!: Observable<VehicleDto[]>;
+  vehicles$!: Observable<SmallVehicleDTO[]>;
   constructor(private vehicleService: VehicleService) { }
 
   ngOnInit(): void {
-    this.vehicles = this.vehicleService.getAllVehicle();
+    this.vehicles$ = this.vehicleService.getAllVehicle();
   }
 
 }

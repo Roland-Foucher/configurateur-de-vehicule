@@ -7,7 +7,8 @@ import { VehicleType } from "../enum/VehicleType";
 
 export class VehicleDto {
 
-  constructor(  public id: number,
+  constructor (
+    public id: number,
     public mark: string,
     public model: string,
     public color: string,
@@ -26,5 +27,5 @@ export class VehicleDto {
     public carType: CarType,
     public bikeType: BikeType,
     public chainrings: number,
-    public antitheft: boolean){}
+    public antitheft: boolean ) {}
 }

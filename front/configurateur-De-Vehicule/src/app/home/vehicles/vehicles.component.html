@@ -1,0 +1,18 @@
+<div class="text-white">
+  <h1 class="text-center p-5 border-bottom border-secondary">Welcome to SCD HAND VEHICLE !</h1>
+
+  <div *ngIf="(vehicles$ | async) as vehicles; else noVehicles" class="container-fluid mb-5" >
+    <div  class="row">
+      <app-vehicle-card
+      class="col-md-3 p-3"
+      *ngFor= "let vehicle of vehicles"
+      [vehicle] = "vehicle">
+      </app-vehicle-card>
+    </div>
+  </div>
+  <ng-template #noVehicles>
+    <h3>
+      There is no vehicles in database - please click on initDatabase in the header
+    </h3>
+  </ng-template>
+</div>
