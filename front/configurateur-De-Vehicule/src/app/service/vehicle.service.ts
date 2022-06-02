@@ -5,6 +5,7 @@ import { catchError, map, Observable, of } from 'rxjs';
 import { SmallVehicleDTO } from '../models/SmallVehicleDTO.models';
 import { VehicleType } from '../enum/VehicleType';
 import { ImageUrl } from '../enum/ImageUrl';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class VehicleService {
 
   url: string = "http://localhost:8080/api";
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router:Router) { }
 
   getAllVehicle() : Observable<SmallVehicleDTO[]>
   {
@@ -53,6 +54,7 @@ export class VehicleService {
         error: (e) => console.error(e),
         complete: () => console.log("database init")
       });
+    this.router.navigate(["vehicles"])
   }
 
   selectImageUrl(vehicle: VehicleDto | SmallVehicleDTO) : string

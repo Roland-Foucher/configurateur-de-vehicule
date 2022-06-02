@@ -14,6 +14,8 @@ import { OneVehicleComponent } from './home/one-vehicle/one-vehicle.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NewVehicleComponent } from './new-vehicle/new-vehicle.component';
 import { VehicleFormComponent } from './vehicle-form/vehicle-form.component';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilderService } from './service/formBuilder.service';
 
 const appRoutes: Routes = [
   { path: 'vehicles', component: VehiclesComponent},
@@ -33,14 +35,17 @@ const appRoutes: Routes = [
     VehicleCardComponent,
     VehiclesComponent,
     OneVehicleComponent,
+    VehicleFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [VehicleService],
+  providers: [VehicleService, FormBuilderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
