@@ -1,3 +1,6 @@
 export enum MotoType {
-  SPORT, ROAD, ROADSTER
+  SPORT = "Sport",
+  ROAD = "Road",
+  ROADSTER = "Roadster",
+
 }

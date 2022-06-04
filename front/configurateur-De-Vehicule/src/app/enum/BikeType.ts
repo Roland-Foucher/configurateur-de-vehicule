@@ -1,3 +1,6 @@
 export enum BikeType {
-  ROAD, MOUNTAIN, CITY, RACE
+  ROAD = "Road",
+  MOUNTAIN = "Mountain",
+  CITY = "City",
+  RACE = "Race"
 }

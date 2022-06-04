@@ -1,3 +1,7 @@
 export enum CarType {
-  SPORT, SUV, SEDAN, CONVERTIBLE, COUPE
+  SPORT = "Sport",
+  SUV = "SUV",
+  SEDAN = "Sedan",
+  CONVERTIBLE = "Convertible",
+  COUPE = "Coupe"
 }

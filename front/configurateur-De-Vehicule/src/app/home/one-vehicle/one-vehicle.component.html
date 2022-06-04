@@ -28,6 +28,10 @@
         <th scope="col">Price</th>
         <td scope="col">{{vehicle.price}}</td>
       </tr>
+      <tr *ngIf="vehicle.purshasePrice">
+        <th scope="col">PurshasePrice</th>
+        <td scope="col">{{vehicle.purshasePrice}}</td>
+      </tr>
       <tr *ngIf="vehicle.purshaseDate">
         <th scope="col">PurshaseDate</th>
         <td scope="col">{{vehicle.purshaseDate}}</td>
@@ -68,13 +72,17 @@
         <th scope="col">Mode</th>
         <td scope="col">{{vehicle.gearBox}}</td>
       </tr>
-      <tr *ngIf="vehicle.antitheft">
+      <tr *ngIf="vehicle.chainrings">
+        <th scope="col">Chainrings</th>
+        <td scope="col">{{vehicle.chainrings}}</td>
+      <tr *ngIf="vehicle.vehiculeType === 'BIKE'">
         <th scope="col">Antitheft</th>
         <td scope="col">{{vehicle.antitheft}}</td>
       </tr>
     </tbody>
   </table>
   <div *ngIf="vehicle.description">
+    <h3>description</h3>
     <p>{{vehicle.description}}</p>
   </div>
 </div>

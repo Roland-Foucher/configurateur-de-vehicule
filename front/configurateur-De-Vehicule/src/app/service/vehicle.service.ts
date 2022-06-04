@@ -5,6 +5,7 @@ import { catchError, map, Observable, of } from 'rxjs';
 import { SmallVehicleDTO } from '../models/SmallVehicleDTO.models';
 import { VehicleType } from '../enum/VehicleType';
 import { ImageUrl } from '../enum/ImageUrl';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class VehicleService {
 
   url: string = "http://localhost:8080/api";
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private router:Router) { }
 
   getAllVehicle() : Observable<SmallVehicleDTO[]>
   {
@@ -25,14 +26,22 @@ export class VehicleService {
     return this.httpClient.get<VehicleDto>(`${this.url}/edit/${id}`);
   }
 
-  saveVehicle(vehicleDto: VehicleDto) : void
+  saveVehicle(vehicleDto: VehicleDto) : boolean
   {
     this.httpClient
       .put(`${this.url}/edit`, vehicleDto)
       .subscribe({
-        error: (e) => console.error(e),
-        complete: () => console.log("database init")
-      });
+        error: (e) => {
+          console.error(e);
+          return false;
+        },
+        complete: () => {
+          console.log("vehicle saved")
+          return true;
+        }
+      })
+      return false;
+
   }
 
   deleteVehicle(id: number) : void
@@ -41,7 +50,7 @@ export class VehicleService {
       .delete(`${this.url}/edit/${id}`)
       .subscribe({
         error: (e) => console.error(e),
-        complete: () => console.log("database init")
+        complete: () => console.log("vehicle deleted")
       });
   }
 
@@ -50,16 +59,31 @@ export class VehicleService {
     this.httpClient
       .get(this.url + "/init-database")
       .subscribe({
-        error: (e) => console.error(e),
-        complete: () => console.log("database init")
+        error: (e) => {
+          console.error(e);
+
+        },
+        complete: () => {
+          console.log("database init");
+          location.reload();
+        }
       });
+
   }
 
   selectImageUrl(vehicle: VehicleDto | SmallVehicleDTO) : string
   {
-    return  vehicle.vehiculeType === VehicleType.CAR ? ImageUrl.CAR:
+    return  vehicle.vehiculeType === VehicleType.CAR ? ImageUrl.CAR :
             vehicle.vehiculeType === VehicleType.MOTO ? ImageUrl.MOTO :
             vehicle.vehiculeType === VehicleType.BIKE ? ImageUrl.BIKE :
             ImageUrl.ERROR
+  }
+
+  public vehicleTypeFactory(vehicleType: string) : VehicleType | undefined
+  {
+    return  vehicleType === 'car' ? VehicleType.CAR :
+            vehicleType === 'bike' ? VehicleType.BIKE :
+            vehicleType === 'moto' ? VehicleType.MOTO :
+            undefined
   }
 }
