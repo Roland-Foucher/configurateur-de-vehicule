@@ -3,28 +3,39 @@
 
     <div>
       <div class="form-group p-2">
-        <label for="mark">Mark</label>
-        <input type="text" class="form-control" id= "mark" formControlName= "mark"/>
+        <label for="mark">Mark</label> <span class="text-danger"> *</span>
+        <input type="text" class="form-control" id= "mark" formControlName= "mark"
+          [ngClass]="{ 'is-invalid': f['mark'].errors }"
+          [ngClass]="{ 'is-valid': f['mark'].valid }"/>
       </div>
       <div class="form-group p-2">
-          <label for="model">Model</label>
-          <input type="text" class="form-control" id= "model" formControlName= "model"/>
+          <label for="model">Model</label> <span class="text-danger"> *</span>
+          <input type="text" class="form-control" id= "model" formControlName= "model"
+            [ngClass]="{ 'is-invalid': f['model'].errors }"
+            [ngClass]="{ 'is-valid': f['model'].valid }"/>
       </div>
       <div class="form-group p-2">
           <label for="color">Color</label>
           <input type="text" class="form-control" id= "color" formControlName= "color"/>
       </div>
       <div class="form-group p-2">
-          <label for="price">Price</label>
-          <input type="text" class="form-control" id= "price" formControlName= "price"/>
+          <label for="price">Price</label> <span class="text-danger"> *</span>
+          <input type="number" class="form-control" id= "price" formControlName= "price"
+            [ngClass]="{ 'is-invalid': f['price'].errors }"
+            [ngClass]="{ 'is-valid': f['price'].valid }"/>
       </div>
       <div class="form-group p-2">
-          <label for="purshasePrice">PurshasePrice</label>
-          <input type="text" class="form-control" id= "purshasePrice" formControlName= "purshasePrice"/>
+          <label for="purshasePrice">PurshasePrice</label> <span class="text-danger"> *</span>
+          <input type="number" class="form-control" id= "purshasePrice" formControlName= "purshasePrice"
+            [ngClass]="{ 'is-invalid': f['purshasePrice'].errors }"
+            [ngClass]="{ 'is-valid': f['purshasePrice'].valid }"/>
       </div>
       <div class="form-group p-2">
-          <label for="purshaseDate">PurshaseDate</label>
-          <input type="date" class="form-control" id= "purshaseDate" formControlName= "purshaseDate"/>
+          <label for="purshaseDate">PurshaseDate</label> <span class="text-danger"> *</span>
+
+          <input type="date" class="form-control" id= "purshaseDate" formControlName= "purshaseDate"
+          [ngClass]="{ 'is-invalid': f['purshaseDate'].errors }"
+          [ngClass]="{ 'is-valid': f['purshaseDate'].valid }"/>
       </div>
     </div>
 
@@ -51,31 +62,30 @@
       <!-- CAR -->
       <div *ngIf="vehicleType === 'car'">
 
-        <div class="fp-2">
-          <label for="door">Door numbers</label>
-          <select class="form-select" name="door" id="door">
-            <option value="2">2</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+        <div class="p-2">
+          <label for="door">Door numbers</label> <span class="text-danger"> *</span>
+          <select class="form-select" formControlName="door" id="door"
+            [ngClass]="{ 'is-invalid': f['door'].errors }"
+            [ngClass]="{ 'is-valid': f['door'].valid }">
+            <option *ngFor="let door of doors" [ngValue]="door.id">{{door.name}}</option>
           </select>
         </div>
 
         <div class=" p-2">
-          <label for="gearBox">GearBox</label>
-          <select  class="form-select" name="gearBox" id="gearBox">
-            <option value="MANUAL">Manual</option>
-            <option value="AUTO">auto</option>
+          <label for="gearBox">GearBox</label> <span class="text-danger"> *</span>
+          <select  class="form-select" formControlName="gearBox" id="gearBox"
+            [ngClass]="{ 'is-invalid': f['gearBox'].errors }"
+            [ngClass]="{ 'is-valid': f['gearBox'].valid }">
+            <option *ngFor="let gearBox of gearBoxes" [ngValue]="gearBox.id">{{gearBox.name}}</option>
           </select>
         </div>
 
         <div class="p-2">
-          <label for="carType">Car Type</label>
-          <select class="form-select" name="carType" id="carType">
-            <option value="SPORT">SPORT</option>
-            <option value="SUV">SUV</option>
-            <option value="SEDAN">SEDAN</option>
-            <option value="CONVERTIBLE">CONVERTIBLE</option>
-            <option value="COUPE">COUPE</option>
+          <label for="carType">Car Type</label> <span class="text-danger"> *</span>
+          <select class="form-select" formControlName="carType" id="carType"
+            [ngClass]="{ 'is-invalid': f['carType'].errors }"
+            [ngClass]="{ 'is-valid': f['carType'].valid }">
+            <option *ngFor="let carType of carTypes" [ngValue]="carType.id">{{carType.name}}</option>
           </select>
         </div>
       </div>
@@ -88,11 +98,11 @@
         </div>
 
         <div class=" p-2">
-          <label for="motoType">Moto Type</label>
-          <select class="form-select" name="motoType" id="motoType">
-            <option value="SPORT">SPORT</option>
-            <option value="ROAD">ROAD</option>
-            <option value="ROADSTER">ROADSTER</option>
+          <label for="motoType">Moto Type</label> <span class="text-danger"> *</span>
+          <select class="form-select" formControlName="motoType" id="motoType"
+            [ngClass]="{ 'is-invalid': f['motoType'].errors }"
+            [ngClass]="{ 'is-valid': f['motoType'].valid }">
+            <option *ngFor="let motoType of motoTypes" [ngValue]="motoType.id">{{motoType.name}}</option>
           </select>
         </div>
       </div>
@@ -110,12 +120,11 @@
         </div>
 
         <div class="p-2">
-          <label for="motoType">Moto Type</label>
-          <select class="form-select" name="motoType" id="motoType">
-            <option value="MOUNTAIN">MOUNTAIN</option>
-            <option value="ROAD">ROAD</option>
-            <option value="CITY">CITY</option>
-            <option value="RACE">RACE</option>
+          <label for="bikeType">Bike Type</label> <span class="text-danger"> *</span>
+          <select class="form-select" formControlName="bikeType" id="bikeType"
+            [ngClass]="{ 'is-invalid': f['bikeType'].errors }"
+            [ngClass]="{ 'is-valid': f['bikeType'].valid }">
+            <option *ngFor="let bikeType of bikeTypes" [ngValue]="bikeType.id">{{bikeType.name}}</option>
           </select>
         </div>
 
@@ -130,7 +139,6 @@
     <div class="p-2">
       <button class="btn btn-primary" type="submit" >Envoyer</button>
     </div>
-
 
   </form>
 </div>
