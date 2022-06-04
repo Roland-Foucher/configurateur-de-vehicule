@@ -12,6 +12,7 @@ import { VehicleService } from 'src/app/service/vehicle.service';
 export class VehiclesComponent implements OnInit {
 
   vehicles$!: Observable<SmallVehicleDTO[]>;
+
   constructor(private vehicleService: VehicleService) { }
 
   ngOnInit(): void {
