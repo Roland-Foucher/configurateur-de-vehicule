@@ -10,8 +10,9 @@ import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeType;
 
 /**
  * utilisation du pattern DTO pour transporter les données du front au backend
+ * entité complète pour afficher la totalité des informations du vehicule
+ * 
  */
-
 public class VehicleDTO {
   private Integer id;
   private String mark;

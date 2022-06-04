@@ -33,7 +33,11 @@ public class EditVehicleController {
   @Autowired
   VehicleRepository vehicleRepository;
   
-  @PutMapping("/")
+  /**
+   * récupère le vehicleDTO du front avec les informations à enregister
+   * La spécification de l'entité en fonction du type de vehicule se fait grace au vehicleFactory
+   */
+  @PutMapping("")
   public ResponseEntity<Vehicle> save(@RequestBody VehicleDTO vehicleDTO){
     Assert.notNull(vehicleDTO, "vehicule is null");
     
@@ -50,6 +54,9 @@ public class EditVehicleController {
     }
  }
 
+  /**
+   * envoie le total des information d'un vehicule
+   */
   @GetMapping("/{id}")
   public ResponseEntity<Vehicle> getOne(@PathVariable int id){
     try {

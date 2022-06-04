@@ -27,7 +27,9 @@ public class AllVehicleController {
   @Autowired
   private InitDatabase initDatabase;
 
-
+  /**
+   * renvoie une liste de vehicules avec le minimum d'information pour afficher la liste
+   */
   @GetMapping("")
   public ResponseEntity<List<SmallVehicleDTO>> getAllVehicles() throws VehicleNotInEnumException, VehiculeNotInDatabaseException {
 
@@ -47,11 +49,15 @@ public class AllVehicleController {
             ResponseEntity.ok(smallVehicleDTOs);
     
   }
-
+  /**
+   * initialise la base de donnée avec des valeurs de base
+   */
   @GetMapping("/init-database")
     public ResponseEntity<String> initDatabase(){
-      System.out.println("test");
-      initDatabase.init();
-      return ResponseEntity.ok().build();
+
+      if(initDatabase.init()){
+        return ResponseEntity.ok().build();
+      }
+      return ResponseEntity.internalServerError().build();
     }
 }

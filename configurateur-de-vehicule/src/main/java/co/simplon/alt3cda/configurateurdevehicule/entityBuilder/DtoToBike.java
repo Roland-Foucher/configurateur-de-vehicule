@@ -16,6 +16,4 @@ public class DtoToBike extends InitVehicle implements IDtoToEntity<Bike> {
                     .setChainrings(vehicleDTO.getChainrings())
                     .build();
   }
-
-
 }

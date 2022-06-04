@@ -14,7 +14,9 @@ import javax.persistence.InheritanceType;
 import org.springframework.util.Assert;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeType;
 
-
+/**
+ * classe mère des vehicules avec les attributs commun à tous
+ */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Vehicle {
