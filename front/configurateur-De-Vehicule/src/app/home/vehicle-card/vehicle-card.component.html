@@ -13,5 +13,14 @@
         class="btn btn-outline-secondary">
         all features
     </a>
+    <a  [routerLink]="['edit/', vehicle.vehiculeType, vehicle.id]"
+        class="btn btn-outline-secondary">
+      edit
+    </a>
+    <a  (click)="delete()"
+    class="btn btn-outline-secondary">
+  delete
+</a>
+
   </div>
 </div>

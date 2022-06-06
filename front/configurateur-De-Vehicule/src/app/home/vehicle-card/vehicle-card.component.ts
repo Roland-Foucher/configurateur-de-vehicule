@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SmallVehicleDTO } from 'src/app/models/SmallVehicleDTO.models';
 import { VehicleService } from 'src/app/service/vehicle.service';
 import { VehicleType } from '../../enum/VehicleType';
@@ -16,11 +17,17 @@ export class VehicleCardComponent implements OnInit {
 
   imageSource!: String;
 
-  constructor( private vehicleService: VehicleService ) { }
+  constructor( private vehicleService: VehicleService) { }
 
   ngOnInit(): void {
 
     this.imageSource = this.vehicleService.selectImageUrl(this.vehicle);
+  }
+
+  delete(){
+    if (confirm('Are you sure you want to delete this car?')) {
+      this.vehicleService.deleteVehicle(this.vehicle.id);
+    }
   }
 
 }

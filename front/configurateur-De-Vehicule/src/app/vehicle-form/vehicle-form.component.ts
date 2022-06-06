@@ -18,8 +18,8 @@ import { VehicleService } from '../service/vehicle.service';
 export class VehicleFormComponent implements OnInit {
 
   vehicleForm!: FormGroup;
-  vehicleType!: string;
-  vehicleDto!: VehicleDto;
+  vehicleType: any;
+  vehicleId: any;
 
   gearBoxes: any;
   doors: any;
@@ -32,7 +32,8 @@ export class VehicleFormComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private formBuilderService: FormBuilderService,
-    private vehicleService: VehicleService) {
+    private vehicleService: VehicleService,
+    private router: Router) {
       this.doors = formBuilderService.doors;
       this.gearBoxes = formBuilderService.gearBoxes;
       this.bikeTypes = formBuilderService.bikeTypes;
@@ -42,24 +43,38 @@ export class VehicleFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.vehicleType = this.route.snapshot.params['type'];
+    this.route.paramMap.subscribe( result => {
+      this.vehicleId = result.has('id') ? result.get('id') : null;
+      this.vehicleType = result.get("type");
+    }
+
+    )
     this.initForm()
   }
 
   initForm(): void{
-
-    if (this.vehicleDto == null){
-      this.vehicleDto = new VehicleDto();
-    }
-      this.vehicleForm = this.formBuilderService.buildVehicle(this.vehicleDto, this.vehicleType);
+      console.log(this.vehicleType);
+      this.vehicleForm = this.formBuilderService.buildVehicle(this.vehicleType);
+      this.implementForm();
   }
 
   onSubmitForm(): void{
     if(this.vehicleForm.valid){
       const vehicleDto: VehicleDto = this.vehicleForm.value;
       vehicleDto.vehiculeType = this.vehicleService.vehicleTypeFactory(this.vehicleType);
-      if (this.vehicleService.saveVehicle(this.vehicleForm.value)){
-        alert("save vehicle succes");
+
+      if (this.vehicleId != null){
+        vehicleDto.id = this.vehicleId;
       }
+      this.vehicleService.saveVehicle(this.vehicleForm.value)
+      this.router.navigate(['/'])
+    }
+  }
+
+  implementForm() : void{
+    if (this.vehicleId != null) {
+      this.vehicleService.getVehicleById(this.vehicleId)
+        .subscribe(el => this.vehicleForm.patchValue(el));
     }
   }
 

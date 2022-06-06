@@ -50,27 +50,27 @@ export class FormBuilderService {
   constructor (private formBuilder: FormBuilder) {}
 
 
-  public buildVehicle(vehicleDto: VehicleDto, vehicleType: string) : FormGroup
+  public buildVehicle(vehicleType: string) : FormGroup
   {
     return this.formBuilder.group({
-      mark: [vehicleDto.mark, Validators.required],
-      model: [vehicleDto.model, Validators.required],
-      color: [vehicleDto.color],
-      price: [vehicleDto.price, [Validators.required, Validators.min(0)]],
-      purshasePrice: [vehicleDto.purshasePrice, [Validators.required, Validators.min(0)]],
-      purshaseDate: [vehicleDto.purshaseDate, Validators.required],
-      description: [vehicleDto.description],
-      kilometers: [vehicleDto.kilometers, Validators.min(0)],
-      launchDate: [vehicleDto.launchDate],
-      power: [vehicleDto.power, Validators.min(0)],
-      door: [vehicleDto.door, () => vehicleType === 'car' ? Validators.required : null],
-      gearBox: [vehicleDto.gearBox, vehicleType === 'car' ? Validators.required : null],
-      carType: [vehicleDto.carType, vehicleType === 'car' ? Validators.required : null],
-      bikeType: [vehicleDto.bikeType, vehicleType === 'bike' ? Validators.required : null],
-      chainrings: [vehicleDto.chainrings, Validators.min(2)],
-      antitheft: [vehicleDto.antitheft],
-      cylinder: [vehicleDto.cylinder, Validators.min(0)],
-      motoType: [vehicleDto.motoType, vehicleType === 'moto' ? Validators.required : null],
+      mark            : [null, Validators.required],
+      model           : [null, Validators.required],
+      color           : [null],
+      price           : [null, [Validators.required, Validators.min(0)]],
+      purshasePrice   : [null, [Validators.required, Validators.min(0)]],
+      purshaseDate    : [null, Validators.required],
+      description     : [null],
+      kilometers      : [null, Validators.min(0)],
+      launchDate      : [null],
+      power           : [null, Validators.min(0)],
+      door            : [null, () => vehicleType === 'CAR' ? Validators.required : null],
+      gearBox         : [null, () => vehicleType === 'CAR' ? Validators.required : null],
+      carType         : [null, () => vehicleType === 'CAR' ? Validators.required : null],
+      bikeType        : [null, () => vehicleType === 'BIKE' ? Validators.required : null],
+      chainrings      : [null, Validators.min(0)],
+      antitheft       : [null],
+      cylinder        : [null, Validators.min(0)],
+      motoType        : [null, () => vehicleType === 'MOTO' ? Validators.required : null],
     })
   }
 }
