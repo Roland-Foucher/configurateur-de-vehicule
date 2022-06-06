@@ -23,13 +23,13 @@ export class NewVehicleComponent implements OnInit {
   {
     switch (imageUrl) {
       case ImageUrl.CAR:
-        this.router.navigate(["/new-vehicle/car"]);
+        this.router.navigate(["/new-vehicle/CAR"]);
         break;
       case ImageUrl.MOTO:
-        this.router.navigate(["/new-vehicle/moto"]);
+        this.router.navigate(["/new-vehicle/MOTO"]);
         break;
       case ImageUrl.BIKE:
-        this.router.navigate(["new-vehicle/bike"]);
+        this.router.navigate(["/new-vehicle/BIKE"]);
         break;
       default:
         this.router.navigate(["not-found"]);

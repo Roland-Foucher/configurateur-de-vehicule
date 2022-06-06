@@ -20,9 +20,10 @@ import { FormBuilderService } from './service/formBuilder.service';
 const appRoutes: Routes = [
   { path: 'vehicles', component: VehiclesComponent},
   { path: 'vehicles/:id', component: OneVehicleComponent},
+  { path: 'vehicles/edit/:type/:id', component:VehicleFormComponent},
   { path: 'new-vehicle', component: NewVehicleComponent},
   { path: 'new-vehicle/:type', component:VehicleFormComponent},
-  { path: '', component: VehiclesComponent},
+  { path: '', redirectTo: 'vehicles', pathMatch: 'prefix' },
   { path: 'not-found', component: NotFoundComponent},
   { path: '**', redirectTo: '/not-found'}
 ]

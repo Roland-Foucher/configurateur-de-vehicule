@@ -26,21 +26,21 @@ export class VehicleService {
     return this.httpClient.get<VehicleDto>(`${this.url}/edit/${id}`);
   }
 
-  saveVehicle(vehicleDto: VehicleDto) : boolean
+  saveVehicle(vehicleDto: VehicleDto) : void
   {
     this.httpClient
       .put(`${this.url}/edit`, vehicleDto)
       .subscribe({
         error: (e) => {
           console.error(e);
-          return false;
+          alert("Une erreur est survenue")
         },
         complete: () => {
           console.log("vehicle saved")
-          return true;
+          alert("vehicle saved")
         }
       })
-      return false;
+
 
   }
 
@@ -50,7 +50,7 @@ export class VehicleService {
       .delete(`${this.url}/edit/${id}`)
       .subscribe({
         error: (e) => console.error(e),
-        complete: () => console.log("vehicle deleted")
+        complete: () => location.reload(),
       });
   }
 
@@ -81,9 +81,9 @@ export class VehicleService {
 
   public vehicleTypeFactory(vehicleType: string) : VehicleType | undefined
   {
-    return  vehicleType === 'car' ? VehicleType.CAR :
-            vehicleType === 'bike' ? VehicleType.BIKE :
-            vehicleType === 'moto' ? VehicleType.MOTO :
+    return  vehicleType === 'CAR' ? VehicleType.CAR :
+            vehicleType === 'BIKE' ? VehicleType.BIKE :
+            vehicleType === 'MOTO' ? VehicleType.MOTO :
             undefined
   }
 }

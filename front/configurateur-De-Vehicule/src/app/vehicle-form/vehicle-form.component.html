@@ -41,7 +41,7 @@
 
 
       <!-- CAR OR MOTO-->
-      <div *ngIf="vehicleType === ('car' || 'moto')">
+      <div *ngIf="vehicleType === ('CAR' || 'MOTO')">
         <div class="form-group p-2">
           <label for="kilometers">Kilometers</label>
           <input type="number" class="form-control" id= "kilometers" formControlName= "kilometers"/>
@@ -60,7 +60,7 @@
 
 
       <!-- CAR -->
-      <div *ngIf="vehicleType === 'car'">
+      <div *ngIf="vehicleType === 'CAR'">
 
         <div class="p-2">
           <label for="door">Door numbers</label> <span class="text-danger"> *</span>
@@ -91,7 +91,7 @@
       </div>
 
       <!-- MOTO -->
-      <div *ngIf="vehicleType === 'moto'">
+      <div *ngIf="vehicleType === 'MOTO'">
         <div class="form-group p-2">
           <label for="cylinder">Cylinder</label>
           <input type="number" class="form-control" id= "cylinder" formControlName= "cylinder">
@@ -108,7 +108,7 @@
       </div>
 
       <!-- BIKE -->
-      <div *ngIf="vehicleType === 'bike'">
+      <div *ngIf="vehicleType === 'BIKE'">
         <div class="form-group p-2">
           <label for="chainrings">Chainrings</label>
           <input type="number" class="form-control" id= "chainrings" formControlName= "chainrings">
