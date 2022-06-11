@@ -1,14 +1,10 @@
 import { Injectable } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { BikeType } from "../enum/BikeType";
 import { CarType } from "../enum/CarType";
 import { Door } from "../enum/Door";
 import { GearBox } from "../enum/GearBox";
-import { ImageUrl } from "../enum/ImageUrl";
 import { MotoType } from "../enum/MotoType";
-import { VehicleType } from "../enum/VehicleType";
-import { VehicleDto } from '../models/VehicleDto.models';
 
 @Injectable({
   providedIn: 'root'
