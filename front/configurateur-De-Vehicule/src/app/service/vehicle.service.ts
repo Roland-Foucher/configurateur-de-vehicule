@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient} from "@angular/common/http";
 import { VehicleDto } from '../models/VehicleDto.models';
-import { catchError, map, Observable, of } from 'rxjs';
+import { Observable} from 'rxjs';
 import { SmallVehicleDTO } from '../models/SmallVehicleDTO.models';
 import { VehicleType } from '../enum/VehicleType';
 import { ImageUrl } from '../enum/ImageUrl';

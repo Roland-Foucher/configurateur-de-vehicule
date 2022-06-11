@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map, Observable, tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { VehicleDto } from 'src/app/models/VehicleDto.models';
 import { VehicleService } from 'src/app/service/vehicle.service';
 

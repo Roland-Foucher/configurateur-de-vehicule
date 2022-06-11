@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { SmallVehicleDTO } from 'src/app/models/SmallVehicleDTO.models';
-import { VehicleDto } from 'src/app/models/VehicleDto.models';
 import { VehicleService } from 'src/app/service/vehicle.service';
 
 @Component({

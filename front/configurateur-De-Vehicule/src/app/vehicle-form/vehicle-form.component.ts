@@ -1,11 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Door } from '../enum/Door';
-import { GearBox } from '../enum/GearBox';
-import { ImageUrl } from '../enum/ImageUrl';
-import { VehicleType } from '../enum/VehicleType';
 import { VehicleDto } from '../models/VehicleDto.models';
 import { FormBuilderService } from '../service/formBuilder.service';
 import { VehicleService } from '../service/vehicle.service';
