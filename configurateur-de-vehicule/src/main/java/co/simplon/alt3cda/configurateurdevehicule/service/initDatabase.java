@@ -22,7 +22,7 @@ public class InitDatabase {
   @Autowired
   private VehicleRepository vehicleRepository;
 
-  @Transactional
+  @Transactional(rollbackOn = Exception.class)
   public boolean init() {
 
       Car car = new Car.Builder(new Vehicle(3000.0, 4000.0, VehiculeType.CAR, "Peugeot", "306"), 
