@@ -34,11 +34,11 @@ public class VehicleDTO {
   private BikeType bikeType;
   private int chainrings;
   private boolean antitheft;
-  
+
   public VehicleDTO(Integer id, String mark, String model, String color, Double price,
       Double purshasePrice, LocalDate purshaseDate, String description,
-      VehiculeType vehiculeType, int cylinder,int kilometers, LocalDate launchDate, 
-      int power, MotoType motoType, int door, GearBox gearBox, CarType carType, 
+      VehiculeType vehiculeType, int cylinder, int kilometers, LocalDate launchDate,
+      int power, MotoType motoType, int door, GearBox gearBox, CarType carType,
       BikeType bikeType, int chainrings, boolean antitheft) {
     this.id = id;
     this.mark = mark;
@@ -61,63 +61,83 @@ public class VehicleDTO {
     this.chainrings = chainrings;
     this.antitheft = antitheft;
   }
+
   public Integer getId() {
     return id;
   }
+
   public String getMark() {
     return mark;
   }
+
   public String getModel() {
     return model;
   }
+
   public String getColor() {
     return color;
   }
+
   public Double getPrice() {
     return price;
   }
+
   public Double getPurshasePrice() {
     return purshasePrice;
   }
+
   public LocalDate getPurshaseDate() {
     return purshaseDate;
   }
+
   public String getDescription() {
     return description;
   }
+
   public VehiculeType getVehiculeType() {
     return vehiculeType;
   }
+
   public int getCylinder() {
     return cylinder;
   }
+
   public int getKilometers() {
     return kilometers;
   }
+
   public LocalDate getLaunchDate() {
     return launchDate;
   }
+
   public int getPower() {
     return power;
   }
+
   public MotoType getMotoType() {
     return motoType;
   }
+
   public Door getDoor() {
     return door;
   }
+
   public GearBox getGearBox() {
     return gearBox;
   }
+
   public CarType getCarType() {
     return carType;
   }
+
   public BikeType getBikeType() {
     return bikeType;
   }
+
   public int getChainrings() {
     return chainrings;
   }
+
   public boolean isAntitheft() {
     return antitheft;
   }

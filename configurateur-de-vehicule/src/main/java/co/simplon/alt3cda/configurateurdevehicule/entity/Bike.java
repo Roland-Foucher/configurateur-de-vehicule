@@ -11,7 +11,7 @@ import org.springframework.util.Assert;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.BikeType;
 
 /**
- * Les entités utilisent le design pattern builder pour créer les instances 
+ * Les entités utilisent le design pattern builder pour créer les instances
  */
 @Entity
 @OnDelete(action = OnDeleteAction.CASCADE)
@@ -25,7 +25,8 @@ public class Bike extends Vehicle {
   private int chainrings;
   private boolean antitheft;
 
-  public Bike() {}
+  public Bike() {
+  }
 
   public int getChainrings() {
     return chainrings;
@@ -91,7 +92,5 @@ public class Bike extends Vehicle {
       return bike;
     }
   }
-
-
 
 }

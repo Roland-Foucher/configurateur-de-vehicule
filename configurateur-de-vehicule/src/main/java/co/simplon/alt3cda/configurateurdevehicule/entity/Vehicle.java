@@ -1,6 +1,5 @@
 package co.simplon.alt3cda.configurateurdevehicule.entity;
 
-
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,16 +36,18 @@ public class Vehicle {
   @Column(nullable = false)
   private LocalDate purshaseDate;
 
-  @Column (columnDefinition = "TINYTEXT")
+  @Column(columnDefinition = "TINYTEXT")
   private String description;
 
   @Enumerated(EnumType.STRING)
-  @Column (columnDefinition = "ENUM('CAR', 'MOTO', 'BIKE')", nullable = false)
+  @Column(columnDefinition = "ENUM('CAR', 'MOTO', 'BIKE')", nullable = false)
   private VehiculeType vehiculeType;
 
-  public Vehicle() {}
+  public Vehicle() {
+  }
+
   public Vehicle(Double price, Double purshasePrice, VehiculeType vehiculeType, String mark, String model) {
-    
+
     Assert.notNull(price, "price is null");
     Assert.notNull(purshasePrice, "purshaseprice is null");
     Assert.notNull(vehiculeType, "vehiculeType is null");
@@ -131,5 +132,5 @@ public class Vehicle {
   protected void setMark(String mark) {
     this.mark = mark;
   }
-  
+
 }

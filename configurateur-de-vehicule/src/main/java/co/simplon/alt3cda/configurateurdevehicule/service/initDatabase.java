@@ -25,50 +25,47 @@ public class InitDatabase {
   @Transactional(rollbackOn = Exception.class)
   public boolean init() {
 
-      Car car = new Car.Builder(new Vehicle(3000.0, 4000.0, VehiculeType.CAR, "Peugeot", "306"), 
-                                    CarType.SEDAN, Door.N5, 
-                                    GearBox.MANUAL)
-                        .setId(1)
-                        .setColor("red")
-                        .setPurshaseDate(LocalDate.now())
-                        .setLaunchDate(LocalDate.now())
-                        .setKilometers(86000)
-                        .setPower(100)
-                        .build();
+    Car car = new Car.Builder(new Vehicle(3000.0, 4000.0, VehiculeType.CAR, "Peugeot", "306"), CarType.SEDAN, Door.N5,
+        GearBox.MANUAL)
+        .setId(1)
+        .setColor("red")
+        .setPurshaseDate(LocalDate.now())
+        .setLaunchDate(LocalDate.now())
+        .setKilometers(86000)
+        .setPower(100)
+        .build();
 
     vehicleRepository.save(car);
 
-    Car car2 = new Car.Builder(new Vehicle(2300.0, 3000.0, VehiculeType.CAR, "Renault", "Clio"), 
-                                  CarType.SEDAN, Door.N5, 
-                                  GearBox.MANUAL)
-                        .setId(2)
-                        .setColor("black")
-                        .setPurshaseDate(LocalDate.now())
-                        .setLaunchDate(LocalDate.now())
-                        .setKilometers(13400)
-                        .setPower(100)
-                        .build();
+    Car car2 = new Car.Builder(new Vehicle(2300.0, 3000.0, VehiculeType.CAR, "Renault", "Clio"),
+        CarType.SEDAN, Door.N5,
+        GearBox.MANUAL)
+        .setId(2)
+        .setColor("black")
+        .setPurshaseDate(LocalDate.now())
+        .setLaunchDate(LocalDate.now())
+        .setKilometers(13400)
+        .setPower(100)
+        .build();
 
     vehicleRepository.save(car2);
 
-    Bike bike = new Bike.Builder(new Vehicle(150.9, 200.0, VehiculeType.BIKE, "Decatlon", "VRun")
-                                    , BikeType.CITY)
-                        .setId(3)
-                        .setColor("blue")
-                        .setPurshaseDate(LocalDate.now())
-                        .build();
+    Bike bike = new Bike.Builder(new Vehicle(150.9, 200.0, VehiculeType.BIKE, "Decatlon", "VRun"), BikeType.CITY)
+        .setId(3)
+        .setColor("blue")
+        .setPurshaseDate(LocalDate.now())
+        .build();
 
     vehicleRepository.save(bike);
 
-    Moto moto = new Moto.Builder(new Vehicle(8000.0, 6000.0, VehiculeType.MOTO, "Maserati", "Grosse-Moto")
-                                      , MotoType.SPORT)
-                        .setId(4)
-                        .setColor("green")
-                        .setPurshaseDate(LocalDate.now())
-                        .build();
-      
+    Moto moto = new Moto.Builder(new Vehicle(8000.0, 6000.0, VehiculeType.MOTO, "Maserati", "Grosse-Moto"),
+        MotoType.SPORT)
+        .setId(4)
+        .setColor("green")
+        .setPurshaseDate(LocalDate.now())
+        .build();
 
-  vehicleRepository.save(moto);
-  return true;
+    vehicleRepository.save(moto);
+    return true;
   }
 }

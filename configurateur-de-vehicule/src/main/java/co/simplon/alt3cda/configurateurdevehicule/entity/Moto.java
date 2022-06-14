@@ -11,7 +11,7 @@ import org.springframework.util.Assert;
 import co.simplon.alt3cda.configurateurdevehicule.enumClass.MotoType;
 
 /**
- * Les entités utilisent le design pattern builder pour créer les instances 
+ * Les entités utilisent le design pattern builder pour créer les instances
  */
 @Entity
 @OnDelete(action = OnDeleteAction.CASCADE)
@@ -23,15 +23,16 @@ public class Moto extends Vehicle {
   private int kilometers;
 
   private LocalDate launchDate;
-  
-  @Column (columnDefinition = "TINYINT unsigned")
+
+  @Column(columnDefinition = "TINYINT unsigned")
   private int power;
 
   @Enumerated(EnumType.STRING)
-  @Column (columnDefinition = "ENUM('SPORT', 'ROAD', 'ROADSTER')", nullable = false)
+  @Column(columnDefinition = "ENUM('SPORT', 'ROAD', 'ROADSTER')", nullable = false)
   private MotoType motoType;
 
-  public Moto() {}
+  public Moto() {
+  }
 
   public int getCylinder() {
     return cylinder;
@@ -60,7 +61,7 @@ public class Moto extends Vehicle {
     public Builder(Vehicle vehicle, MotoType motoType) {
       Assert.notNull(vehicle, "vehicle is null");
       Assert.notNull(motoType, "MotoType is null");
-      
+
       moto = new Moto();
       moto.setPrice(vehicle.getPrice());
       moto.setPurshasePrice(vehicle.getPurshasePrice());
@@ -115,8 +116,5 @@ public class Moto extends Vehicle {
       return moto;
     }
   }
-
-
-   
 
 }

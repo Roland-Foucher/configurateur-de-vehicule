@@ -24,39 +24,40 @@ import co.simplon.alt3cda.configurateurdevehicule.repository.VehicleRepository;
 @CrossOrigin("http://localhost:4200")
 @RequestMapping("/api/edit")
 public class EditVehicleController {
-  
+
   @Autowired
   VehicleFactory vehiculeFactory;
 
   @Autowired
   VehicleRepository vehicleRepository;
-  
+
   /**
    * récupère le vehicleDTO du front avec les informations à enregister
-   * La spécification de l'entité en fonction du type de vehicule se fait grace au vehicleFactory
+   * La spécification de l'entité en fonction du type de vehicule se fait grace au
+   * vehicleFactory
    */
   @PutMapping("")
-  public ResponseEntity<Vehicle> save(@RequestBody VehicleDTO vehicleDTO){
+  public ResponseEntity<Vehicle> save(@RequestBody VehicleDTO vehicleDTO) {
     Assert.notNull(vehicleDTO, "vehicule is null");
-    
+
     try {
       Vehicle savedVehicle = vehiculeFactory.saveVehicle(vehicleDTO);
-      if (savedVehicle != null){
+      if (savedVehicle != null) {
         return new ResponseEntity<Vehicle>(savedVehicle, HttpStatus.CREATED);
-      }else{
+      } else {
         return ResponseEntity.internalServerError().build();
       }
     } catch (VehicleNotInEnumException e) {
       e.printStackTrace();
       return ResponseEntity.internalServerError().build();
     }
- }
+  }
 
   /**
    * envoie le total des information d'un vehicule
    */
   @GetMapping("/{id}")
-  public ResponseEntity<Vehicle> getOne(@PathVariable int id){
+  public ResponseEntity<Vehicle> getOne(@PathVariable int id) {
     try {
       Vehicle vehicle = vehiculeFactory.getVehicle(id);
       return ResponseEntity.ok(vehicle);
@@ -70,13 +71,13 @@ public class EditVehicleController {
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<String> deleteOne(@PathVariable int id){
-    try{
+  public ResponseEntity<String> deleteOne(@PathVariable int id) {
+    try {
       vehicleRepository.deleteById(id);
-    }catch(EmptyResultDataAccessException e){
+    } catch (EmptyResultDataAccessException e) {
       return ResponseEntity.notFound().build();
     }
-    if (vehicleRepository.findById(id).orElse(null) == null){
+    if (vehicleRepository.findById(id).orElse(null) == null) {
       return ResponseEntity.ok().build();
     }
     return ResponseEntity.internalServerError().body("error when delete the vehicle");

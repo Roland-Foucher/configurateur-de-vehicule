@@ -25,7 +25,8 @@ public class VehicleFactory implements IVehicleFactory {
   private VehicleRepository vehicleRepository;
 
   @Autowired
-  @Lazy // utilisation du pattern proxy avec lazy pour instancier les repo enfants que si on en a besoin
+  @Lazy // utilisation du pattern proxy avec lazy pour instancier les repo enfants que
+        // si on en a besoin
   private MotoRepository motoRepository;
 
   @Autowired
@@ -38,13 +39,14 @@ public class VehicleFactory implements IVehicleFactory {
 
   /**
    * Factory pour initialiser le bon repository pour récupérer l'entité
-   * Cette methode sert seulement pour l'exercice, le vehicleRepository parent le fait déjà automatiquement...
+   * Cette methode sert seulement pour l'exercice, le vehicleRepository parent le
+   * fait déjà automatiquement...
    */
   public Vehicle getVehicle(Integer id) throws VehicleNotInEnumException, VehiculeNotInDatabaseException {
-    
+
     VehiculeType vehiculeType = vehicleRepository.findById(id)
-                                                  .orElseThrow(VehiculeNotInDatabaseException::new)
-                                                  .getVehiculeType();
+        .orElseThrow(VehiculeNotInDatabaseException::new)
+        .getVehiculeType();
 
     switch (vehiculeType) {
       case CAR:
@@ -62,10 +64,11 @@ public class VehicleFactory implements IVehicleFactory {
   }
 
   /**
-   * Factory methode pour créer le bon objet et le sauvegarder dans la bdd suivant son type
+   * Factory methode pour créer le bon objet et le sauvegarder dans la bdd suivant
+   * son type
    */
-  
-  public Vehicle saveVehicle(VehicleDTO vehicleDTO) throws VehicleNotInEnumException{
+
+  public Vehicle saveVehicle(VehicleDTO vehicleDTO) throws VehicleNotInEnumException {
 
     Assert.notNull(vehicleDTO.getVehiculeType(), "vehiculeType is null");
 

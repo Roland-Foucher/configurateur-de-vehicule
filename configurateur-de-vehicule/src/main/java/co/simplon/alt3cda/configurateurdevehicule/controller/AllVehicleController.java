@@ -26,36 +26,36 @@ public class AllVehicleController {
   private InitDatabase initDatabase;
 
   /**
-   * renvoie une liste de vehicules avec le minimum d'information pour afficher la liste
+   * renvoie une liste de vehicules avec le minimum d'information pour afficher la
+   * liste
    */
   @GetMapping("")
-  public ResponseEntity<List<SmallVehicleDTO>> getAllVehicles() throws VehicleNotInEnumException, VehiculeNotInDatabaseException {
+  public ResponseEntity<List<SmallVehicleDTO>> getAllVehicles()
+      throws VehicleNotInEnumException, VehiculeNotInDatabaseException {
 
-    
-    List<SmallVehicleDTO> smallVehicleDTOs =  vehicleRepository.findAll()
-            .stream()
-            .map(v -> new SmallVehicleDTO(
-              v.getId(), 
-              v.getMark(), 
-              v.getModel(), 
-              v.getVehiculeType(), 
-              v.getPrice()))
-            .collect(Collectors.toList());
-      
-    return smallVehicleDTOs.size() == 0 ? 
-            ResponseEntity.noContent().build() : 
-            ResponseEntity.ok(smallVehicleDTOs);
-    
+    List<SmallVehicleDTO> smallVehicleDTOs = vehicleRepository.findAll()
+        .stream()
+        .map(v -> new SmallVehicleDTO(
+            v.getId(),
+            v.getMark(),
+            v.getModel(),
+            v.getVehiculeType(),
+            v.getPrice()))
+        .collect(Collectors.toList());
+
+    return smallVehicleDTOs.size() == 0 ? ResponseEntity.noContent().build() : ResponseEntity.ok(smallVehicleDTOs);
+
   }
+
   /**
    * initialise la base de donnée avec des valeurs de base
    */
   @GetMapping("/init-database")
-    public ResponseEntity<String> initDatabase(){
+  public ResponseEntity<String> initDatabase() {
 
-      if(initDatabase.init()){
-        return ResponseEntity.ok().build();
-      }
-      return ResponseEntity.internalServerError().build();
+    if (initDatabase.init()) {
+      return ResponseEntity.ok().build();
     }
+    return ResponseEntity.internalServerError().build();
+  }
 }

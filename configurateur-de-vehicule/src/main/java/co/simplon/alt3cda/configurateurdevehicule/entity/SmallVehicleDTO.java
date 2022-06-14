@@ -4,7 +4,8 @@ import co.simplon.alt3cda.configurateurdevehicule.enumClass.VehiculeType;
 
 /**
  * * utilisation du pattern DTO pour transporter les données du front au backend
- * Entité DTO envoyé au front avec le minimum de'attribut pour afficher la liste des vehicule
+ * Entité DTO envoyé au front avec le minimum de'attribut pour afficher la liste
+ * des vehicule
  * permet d'économisé la data lors transfert de l'envoi des données
  */
 public class SmallVehicleDTO {
@@ -35,11 +36,9 @@ public class SmallVehicleDTO {
     return model;
   }
 
-
   public VehiculeType getVehiculeType() {
     return vehiculeType;
   }
-
 
   public Double getPrice() {
     return price;
